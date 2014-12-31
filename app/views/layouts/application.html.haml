@@ -24,11 +24,13 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          = link_to "Training Benchmarks", "#", :class => "navbar-brand"
+          = link_to "Training Benchmarks", root_path, :class => "navbar-brand"
         #navbar.collapse.navbar-collapse
           %ul.nav.navbar-nav
             %li.active
-              %a{:href => "#"} Home
+              %a{:href => root_path} Home
+            %li
+              =link_to Track.model_name.human.pluralize, tracks_path
           - if user_signed_in?
             %ul.nav.navbar-nav.navbar-right
               %li.divider-vertical
