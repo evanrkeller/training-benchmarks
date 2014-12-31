@@ -35,7 +35,10 @@ gem 'devise'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'simplecov', require: false, group: :test
+group :test do
+  gem 'simplecov', require: false
+  gem 'rake'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
