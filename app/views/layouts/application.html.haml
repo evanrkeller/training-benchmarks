@@ -28,8 +28,6 @@
         #navbar.collapse.navbar-collapse
           %ul.nav.navbar-nav
             %li.active
-              %a{:href => root_path}= t('home')
-            %li
               =link_to Track.model_name.human.pluralize, tracks_path
           - if user_signed_in?
             %ul.nav.navbar-nav.navbar-right
