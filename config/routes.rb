@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :stages
+
   resources :tracks
 
   devise_for :users
