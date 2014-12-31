@@ -1,1 +1,4 @@
 language: ruby
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database training-benchmarks_test;' -U postgres
