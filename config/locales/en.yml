@@ -20,4 +20,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  app_title: 'Training Benchmarks'
+  are_you_sure: 'Are you sure?'
+  back: 'Back'
+  close: 'Close'
+  destroy: 'Destroy'
+  edit: 'Edit'
+  edit_model: 'Edit %{model}'
+  home: 'Home'
+  new_model: 'New %{model}'
+  show: 'Show'
+  show_model: 'Show %{model}'
+  toggle_navigation: 'Toggle navigation'

@@ -1,7 +1,7 @@
 .page-header
   = link_to tracks_path, :class => 'btn btn-default' do
     %span.glyphicon.glyphicon-list-alt
-    Back
-  %h1 New track
+    =t('back')
+  %h1= t('new_model', model: Track.model_name.human)
 
 = render 'form'

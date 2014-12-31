@@ -1,14 +1,14 @@
 .page-header
   = link_to new_track_path, :class => 'btn btn-primary' do
     %span.glyphicon.glyphicon-plus
-    New Track
-  %h1 Listing tracks
+    = t('new_model', model: Track.model_name.human)
+  %h1= Track.model_name.human.pluralize
 
 .table-responsive
   %table.table.table-striped.table-bordered.table-hover
     %thead
       %tr
-        %th Name
+        %th= Track.human_attribute_name(:name)
         %th
         %th
         %th
@@ -17,6 +17,6 @@
       - @tracks.each do |track|
         %tr
           %td= track.name
-          %td= link_to 'Show', track
-          %td= link_to 'Edit', edit_track_path(track)
-          %td= link_to 'Destroy', track, :data => { confirm: 'Are you sure?' }, :method => :delete
+          %td= link_to t('show'), track
+          %td= link_to t('edit'), edit_track_path(track)
+          %td= link_to t('destroy'), track, :data => { confirm: t('are_you_sure') }, :method => :delete
