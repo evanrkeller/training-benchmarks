@@ -1,0 +1,22 @@
+.page-header
+  = link_to new_track_path, :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Track
+  %h1 Listing tracks
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Name
+        %th
+        %th
+        %th
+
+    %tbody
+      - @tracks.each do |track|
+        %tr
+          %td= track.name
+          %td= link_to 'Show', track
+          %td= link_to 'Edit', edit_track_path(track)
+          %td= link_to 'Destroy', track, :data => { confirm: 'Are you sure?' }, :method => :delete

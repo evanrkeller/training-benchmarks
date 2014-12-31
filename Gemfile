@@ -37,6 +37,7 @@ gem 'devise'
 
 group :test do
   gem 'simplecov', require: false
+  gem 'shoulda-matchers', require: false
   gem 'rake'
 end
 
