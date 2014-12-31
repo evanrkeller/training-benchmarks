@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
 
 def index
-  render html: '<h1>Welcome</h1>'.html_safe
+  render html: '<h1>Welcome</h1>'.html_safe, layout: 'application'
 end
 
 end
