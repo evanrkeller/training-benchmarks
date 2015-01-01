@@ -6,7 +6,8 @@
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
     %meta{:content => "", :name => "description"}
     %meta{:content => "", :name => "author"}
-    %title Starter Template for Bootstrap
+    %link{:rel => "shortcut icon", :href => "favicon.ico"}
+    %title= t('app_title')
 
     / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
     /[if lt IE 9]
@@ -20,24 +21,36 @@
       .container
         .navbar-header
           %button.navbar-toggle.collapsed{:type => "button", :data => {:toggle => "collapse", :target => "#navbar"}, :aria => {:expanded => "false", :controls => "navbar"} }
-            %span.sr-only Toggle navigation
+            %span.sr-only= t('toggle_navigation')
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          = link_to "Project name", "#", :class => "navbar-brand"
+          = link_to t('app_title'), root_path, :class => "navbar-brand"
         #navbar.collapse.navbar-collapse
           %ul.nav.navbar-nav
-            %li.active
-              %a{:href => "#"} Home
-            %li
-              %a{:href => "#about"} About
-            %li
-              %a{:href => "#contact"} Contact
+            %li{class: current_page?(controller: 'tracks') ? 'active' : nil}
+              =link_to Track.model_name.human.pluralize, tracks_path
+            %li{class: current_page?(controller: 'stages') ? 'active' : nil}
+              =link_to Stage.model_name.human.pluralize, stages_path
+            %li{class: current_page?(controller: 'bmarks') ? 'active' : nil}
+              =link_to Bmark.model_name.human.pluralize, bmarks_path
+          - if user_signed_in?
+            %ul.nav.navbar-nav.navbar-right
+              %li.divider-vertical
+              %li.dropdown
+                %a(href="#" class="dropdown-toggle" data-toggle="dropdown")
+                  %span.glyphicon.glyphicon-user
+                  = current_user.email
+                  %b.caret
+                %ul.dropdown-menu
+                  %li
+                    = link_to t(:sign_out), destroy_user_session_path, method: :delete
+
     .container
       - flash.each do |name, msg|
         = content_tag :div, :class => "alert alert-#{name == :error ? "danger" : "success" } alert-dismissable", :role => "alert" do
           %button.close{:type => "button", :data => {:dismiss => "alert"} }
-            span{:aria => {:hidden => "true"} } &times;
-            span.sr-only Close
+            %span{:aria => {:hidden => "true"} } &times;
+            %span.sr-only= t('close')
           = msg
       = yield

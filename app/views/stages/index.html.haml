@@ -1,0 +1,22 @@
+.page-header
+  = link_to new_stage_path, :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    = t('new_model', model: Stage.model_name.human)
+  %h1= Stage.model_name.human.pluralize
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th= Stage.human_attribute_name(:name)
+        %th
+        %th
+        %th
+
+    %tbody
+      - @stages.each do |stage|
+        %tr
+          %td= stage.name
+          %td= link_to t('show'), stage
+          %td= link_to t('edit'), edit_stage_path(stage)
+          %td= link_to t('destroy'), stage, :data => { confirm: t('are_you_sure') }, :method => :delete

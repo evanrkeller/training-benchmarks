@@ -25,6 +25,7 @@ gem 'haml-rails'
 gem 'bootstrap-generators', '~> 3.3.1'
 
 gem 'devise'
+gem 'acts_as_list'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -37,6 +38,7 @@ gem 'devise'
 
 group :test do
   gem 'simplecov', require: false
+  gem 'shoulda-matchers', require: false
   gem 'rake'
 end
 
@@ -44,6 +46,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
+  gem 'i18n-tasks', '~> 0.7.10'
+
+  gem 'pry'
   gem 'factory_girl_rails', '~> 4.0'
 
   # Access an IRB console on exception pages or by using <%= console %> in views

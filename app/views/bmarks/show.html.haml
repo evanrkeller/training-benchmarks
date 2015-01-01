@@ -1,0 +1,18 @@
+.page-header
+  = link_to bmarks_path, :class => 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    =t('back')
+  = link_to edit_bmark_path(@bmark), :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    =t('edit')
+  %h1= t('show_model', model: Bmark.model_name.human)
+
+%dl.dl-horizontal
+  %dt= Bmark.human_attribute_name(:name) + ':'
+  %dd= @bmark.name
+  %dt= Bmark.human_attribute_name(:description) + ':'
+  %dd= @bmark.description
+  %dt= Bmark.human_attribute_name(:track) + ':'
+  %dd= @bmark.track.name
+  %dt= Bmark.human_attribute_name(:stage) + ':'
+  %dd= @bmark.stage.name
