@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Stage, :type => :model do
+  it { should have_many :bmarks }
   it { should validate_presence_of :name }
 
   describe 'position'

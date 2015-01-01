@@ -1,0 +1,26 @@
+.page-header
+  = link_to new_bmark_path, :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    = t('new_model', model: Bmark.model_name.human)
+  %h1= Bmark.model_name.human.pluralize
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th= Bmark.human_attribute_name(:name)
+        %th= Bmark.human_attribute_name(:track)
+        %th= Bmark.human_attribute_name(:stage)
+        %th
+        %th
+        %th
+
+    %tbody
+      - @bmarks.each do |bmark|
+        %tr
+          %td= bmark.name
+          %td= bmark.track.name
+          %td= bmark.stage.name
+          %td= link_to t('show'), bmark
+          %td= link_to t('edit'), edit_bmark_path(bmark)
+          %td= link_to t('destroy'), bmark, :data => { confirm: t('are_you_sure') }, :method => :delete

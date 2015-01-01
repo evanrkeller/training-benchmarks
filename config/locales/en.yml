@@ -32,3 +32,6 @@ en:
   show: 'Show'
   show_model: 'Show %{model}'
   toggle_navigation: 'Toggle navigation'
+  activerecord:
+    models:
+      bmark: Benchmark

@@ -1,0 +1,10 @@
+.page-header
+  = link_to bmarks_path, :class => 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    =t('back')
+  = link_to @bmark, :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-info-sign
+    =t('show')
+  %h1= t('edit_model', model: Bmark.model_name.human)
+
+= render 'form'
