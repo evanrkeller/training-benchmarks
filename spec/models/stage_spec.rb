@@ -13,7 +13,7 @@ RSpec.describe Stage, :type => :model do
       expect(second_stage.position).to eq first_stage.position + 1
     end
 
-    it 'should be returned in the proper orde' do
+    it 'should be returned in the proper order' do
       second_stage.move_to_bottom
       expect(Stage.all).to eq [first_stage, third_stage, second_stage]
     end
