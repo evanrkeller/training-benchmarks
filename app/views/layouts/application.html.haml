@@ -28,9 +28,9 @@
           = link_to t('app_title'), root_path, :class => "navbar-brand"
         #navbar.collapse.navbar-collapse
           %ul.nav.navbar-nav
-            %li
+            %li{class: current_page?(controller: 'tracks') ? 'active' : nil}
               =link_to Track.model_name.human.pluralize, tracks_path
-            %li
+            %li{class: current_page?(controller: 'stages') ? 'active' : nil}
               =link_to Stage.model_name.human.pluralize, stages_path
           - if user_signed_in?
             %ul.nav.navbar-nav.navbar-right

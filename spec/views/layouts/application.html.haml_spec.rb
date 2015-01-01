@@ -16,4 +16,9 @@ RSpec.describe "layouts/application" do
     expect(rendered).to match("<title>Training Benchmarks</title>")
   end
 
+  it "highlights the approprate nav element" do
+    view.stub(:current_page?) { |options| options[:controller] == 'tracks' }
+    render
+    expect(rendered).to match("<li class='active'>\n<a href=\"/tracks\">Tracks</a>\n</li>")
+  end
 end
