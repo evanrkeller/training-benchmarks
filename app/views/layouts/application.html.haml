@@ -28,6 +28,8 @@
           = link_to t('app_title'), root_path, :class => "navbar-brand"
         #navbar.collapse.navbar-collapse
           %ul.nav.navbar-nav
+            %li{class: current_page?(controller: 'users') ? 'active' : nil}
+              =link_to User.model_name.human.pluralize, users_path
             %li{class: current_page?(controller: 'tracks') ? 'active' : nil}
               =link_to Track.model_name.human.pluralize, tracks_path
             %li{class: current_page?(controller: 'stages') ? 'active' : nil}

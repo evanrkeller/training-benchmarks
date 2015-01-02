@@ -1,0 +1,12 @@
+.page-header
+  = link_to users_path, :class => 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    =t('back')
+  = link_to edit_user_path(@user), :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    =t('edit')
+  %h1= t('show_model', model: User.model_name.human)
+
+%dl.dl-horizontal
+  %dt= User.human_attribute_name(:email) + ':'
+  %dd= @user.email
