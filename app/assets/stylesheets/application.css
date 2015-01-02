@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+img.gravatar {
+  height: 28px;
+  width: 28px;
+  margin: -5px inherit;
+}

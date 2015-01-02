@@ -82,6 +82,7 @@ GEM
       railties (>= 3.0.0)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
+    gravatarify (3.0.0)
     haml (4.0.5)
       tilt
     haml-rails (0.6.0)
@@ -243,6 +244,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   factory_girl_rails (~> 4.0)
+  gravatarify (~> 3.0.0)
   haml-rails
   i18n-tasks (~> 0.7.10)
   jbuilder (~> 2.0)
