@@ -3,7 +3,7 @@
     .alert.alert-danger.alert-dismissable{:role => "alert"}
       %button.close{:type => "button", :data => {:dismiss => "alert"} }
         %span{:aria => {:hidden => "true"} } &times;
-        %span.sr-only t('close')
+        %span.sr-only= t('close')
       %h4= "#{pluralize(@bmark.errors.count, "error")} prohibited this bmark from being saved:"
 
       %ul
