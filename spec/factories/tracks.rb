@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :track do
-    name "MyString"
+    sequence(:name) {|i| "Example Track #{i}" }
   end
 
 end

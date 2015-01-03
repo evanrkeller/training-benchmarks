@@ -14,6 +14,7 @@ RSpec.describe UsersController, :type => :controller do
   context 'when signed in' do
 
     before do
+      @track = FactoryGirl.create(:track)
       @user = FactoryGirl.create(:user)
       sign_in @user
     end
@@ -22,7 +23,7 @@ RSpec.describe UsersController, :type => :controller do
     # User. As you add validations to User, be sure to
     # adjust the attributes here as well.
     let(:valid_attributes) {
-      FactoryGirl.attributes_for(:user)
+      FactoryGirl.attributes_for(:user, track: @track)
     }
 
     let(:invalid_attributes) {
@@ -103,8 +104,13 @@ RSpec.describe UsersController, :type => :controller do
 
     describe "PUT update" do
       describe "with valid params" do
+
+        before do
+          @updated_track = FactoryGirl.create(:track)
+        end
+
         let(:new_attributes) {
-          {email: 'updated@example.com'}
+          {email: 'updated@example.com', track_id: @updated_track.id}
         }
 
         it "updates the requested user" do
@@ -112,6 +118,7 @@ RSpec.describe UsersController, :type => :controller do
           put :update, {:id => user.to_param, :user => new_attributes}
           user.reload
           expect(user.email).to eq(new_attributes[:email])
+          expect(user.track).to eq(@updated_track)
         end
 
         it "assigns the requested user as @user" do

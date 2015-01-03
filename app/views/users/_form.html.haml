@@ -15,5 +15,9 @@
     .col-sm-10
       = f.text_field :email, :class => 'form-control'
   .form-group
+    = f.label :track, :class => 'col-sm-2 control-label'
+    .col-sm-10
+      = f.collection_select(:track_id, Track.all, :id, :name, {}, {class: 'form-control'})
+  .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit :class => 'btn btn-primary'

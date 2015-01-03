@@ -8,13 +8,15 @@
   %table.table.table-striped.table-bordered.table-hover
     %thead
       %tr
-        %th= Bmark.human_attribute_name(:email)
+        %th= User.human_attribute_name(:email)
+        %th= User.human_attribute_name(:track)
         %th.actions
 
     %tbody
       - @users.each do |user|
         %tr
           %td= user.email
+          %td= user.track ? user.track.name : 'Undeclared'
           %td.actions
             = link_to user, {title: t('show')} do
               %span.glyphicon.glyphicon-info-sign{aria: {hidden: 'true'} }
