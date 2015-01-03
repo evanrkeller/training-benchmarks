@@ -9,14 +9,19 @@
     %thead
       %tr
         %th= Bmark.human_attribute_name(:email)
-        %th
-        %th
-        %th
+        %th.actions
 
     %tbody
       - @users.each do |user|
         %tr
           %td= user.email
-          %td= link_to t('show'), user
-          %td= link_to t('edit'), edit_user_path(user)
-          %td= link_to t('destroy'), user, :data => { confirm: t('are_you_sure') }, :method => :delete
+          %td.actions
+            = link_to user, {title: t('show')} do
+              %span.glyphicon.glyphicon-info-sign{aria: {hidden: 'true'} }
+              %span.sr-only>= t('show')
+            = link_to edit_user_path(user), {title: t('edit')} do
+              %span.glyphicon.glyphicon-pencil{aria: {hidden: 'true'} }
+              %span.sr-only>= t('edit')
+            = link_to user, {data: { confirm: t('are_you_sure') }, title: t('destroy')}, method: :delete do
+              %span.glyphicon.glyphicon-trash{aria: {hidden: 'true'} }
+              %span.sr-only>= t('destroy')

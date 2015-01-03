@@ -19,3 +19,8 @@ img.gravatar {
   width: 28px;
   margin: -5px inherit;
 }
+
+th.actions, td.actions {
+	text-align: right;
+	width: 5em;
+}
