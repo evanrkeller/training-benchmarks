@@ -19,7 +19,7 @@ RSpec.describe "layouts/application" do
   end
 
   it "highlights the approprate nav element" do
-    allow(view).to receive(:current_page?) { |options| options[:controller] == 'tracks' }
+    allow(view).to receive(:current_page?) { |options| options[:controller] == '/tracks' }
     render
     expect(rendered).to match("<li class='active'>\n<a href=\"/tracks\">Tracks</a>\n</li>")
   end
