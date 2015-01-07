@@ -13,7 +13,7 @@ describe "User management", :type => :feature do
 
   it "displays a list of benchmarks for that user" do
     @benchmark = FactoryGirl.create(:bmark, track: @user.track)
-    visit "/users/#{@user.id}"
+    visit user_path(@user)
     expect(page).to have_content @benchmark.name
   end
 end
