@@ -12,3 +12,12 @@
   %dd= @user.email
   %dt= User.human_attribute_name(:track) + ':'
   %dd= @user.track ? @user.track.name : 'Undeclared'
+
+%h2= User.human_attribute_name(:bmarks) # i18n-tasks-use t('activerecord.attributes.user.bmarks') # let i18n-tasks know the key is used
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %th= Bmark.human_attribute_name(:name)
+  %tbody
+    - @user.bmarks.each do |benchmark|
+      %tr
+        %td= benchmark.name

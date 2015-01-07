@@ -3,6 +3,9 @@ en:
   activerecord:
     models:
       bmark: Benchmark
+    attributes:
+      user:
+        bmarks: Benchmarks
   app_title: Training Benchmarks
   are_you_sure: Are you sure?
   back: Back

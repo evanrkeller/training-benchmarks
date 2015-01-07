@@ -18,4 +18,10 @@ RSpec.describe "users/show", :type => :view do
     expect(rendered).to match(/Undeclared/)
   end
 
+  it "displays the benchmarks for the selected track" do
+    @example_benchmark = FactoryGirl.create(:bmark, track: @example_track)
+    render
+    expect(rendered).to match("#{@example_benchmark.name}")
+  end
+
 end

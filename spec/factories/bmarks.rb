@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :bmark do
-    name "MyString"
-description "MyText"
-track nil
-stage nil
+    sequence(:name) {|i| "Example Benchmark Number #{i}"}
+    description {"Description of #{name.to_s.downcase}"}
+    track nil
+    stage nil
   end
 
 end
