@@ -18,10 +18,23 @@ RSpec.describe "users/show", :type => :view do
     expect(rendered).to match(/Undeclared/)
   end
 
-  it "displays the benchmarks for the selected track" do
-    @example_benchmark = FactoryGirl.create(:bmark, track: @example_track)
-    render
-    expect(rendered).to match("#{@example_benchmark.name}")
+  describe 'benchmarks' do
+
+    before do
+      @example_benchmark = FactoryGirl.create(:bmark, track: @example_track)
+    end
+
+    it "display for the selected track" do
+      render
+      expect(rendered).to match("#{@example_benchmark.name}")
+    end
+
+    it "that have been signed off are indicated" do
+      FactoryGirl.create(:sign_off, bmark: @example_benchmark, user: @user)
+      render
+      expect(rendered).to match("Completed")
+    end
+
   end
 
 end

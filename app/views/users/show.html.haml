@@ -17,7 +17,14 @@
 %table.table.table-striped.table-bordered.table-hover
   %thead
     %th= Bmark.human_attribute_name(:name)
+    %th.actions
   %tbody
     - @user.bmarks.each do |benchmark|
       %tr
         %td= benchmark.name
+        %td.actions
+          -if @user.completed_benchmarks.include?(benchmark)
+            %span.glyphicon.glyphicon-ok.completed{aria: {hidden: 'true'} }
+            %span.sr-only>= t('completed')
+
+

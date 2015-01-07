@@ -6,4 +6,9 @@ class User < ActiveRecord::Base
 
   belongs_to :track
   has_many :bmarks, through: :track
+  has_many :sign_offs
+
+  def completed_benchmarks
+    sign_offs.map(&:bmark)
+  end
 end
