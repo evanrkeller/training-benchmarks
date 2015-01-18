@@ -17,5 +17,6 @@ en:
   new_model: New %{model}
   show: Show
   show_model: Show %{model}
+  sign_off: Sign Off
   sign_out: Sign Out
   toggle_navigation: Toggle navigation

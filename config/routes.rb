@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :tracks
 
+  resources :sign_offs, only: [:create]
+
   devise_for :users, skip: [:registrations]
   devise_scope :user do
     get '/registrations/cancel(.:format)' => 'devise/registrations#cancel', as: :cancel_user_registration
