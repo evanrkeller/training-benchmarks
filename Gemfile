@@ -27,6 +27,8 @@ gem 'bootstrap-generators', '~> 3.3.1'
 gem 'devise'
 gem 'acts_as_list'
 
+gem 'gravatarify', '~> 3.0.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -45,6 +47,10 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  gem 'capybara'
+
+  gem 'database_cleaner'
 
   gem 'i18n-tasks', '~> 0.7.10'
 

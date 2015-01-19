@@ -1,0 +1,29 @@
+.page-header
+  = link_to new_user_path, :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    = t('new_model', model: User.model_name.human)
+  %h1= User.model_name.human.pluralize
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th= User.human_attribute_name(:email)
+        %th= User.human_attribute_name(:track)
+        %th.actions
+
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= user.email
+          %td= user.track ? user.track.name : 'Undeclared'
+          %td.actions
+            = link_to user, {title: t('show')} do
+              %span.glyphicon.glyphicon-info-sign{aria: {hidden: 'true'} }
+              %span.sr-only>= t('show')
+            = link_to edit_user_path(user), {title: t('edit')} do
+              %span.glyphicon.glyphicon-pencil{aria: {hidden: 'true'} }
+              %span.sr-only>= t('edit')
+            = link_to user, {data: { confirm: t('are_you_sure') }, title: t('destroy')}, method: :delete do
+              %span.glyphicon.glyphicon-trash{aria: {hidden: 'true'} }
+              %span.sr-only>= t('destroy')

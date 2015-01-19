@@ -5,7 +5,21 @@ Rails.application.routes.draw do
 
   resources :tracks
 
-  devise_for :users
+  resources :sign_offs, only: [:create]
+
+  devise_for :users, skip: [:registrations]
+  devise_scope :user do
+    get '/registrations/cancel(.:format)' => 'devise/registrations#cancel', as: :cancel_user_registration
+    post '/registrations(.:format)' => 'devise/registrations#create', as: :user_registration
+    get '/registrations/sign_up(.:format)' => 'devise/registrations#new', as: :new_user_registration
+    get '/registrations/edit(.:format)' => 'devise/registrations#edit', as: :edit_user_registration
+    patch '/registrations(.:format)' => 'devise/registrations#update'
+    put '/registrations(.:format)' => 'devise/registrations#update'
+    delete '/registrations(.:format)' => 'devise/registrations#destroy'
+  end
+
+  resources :users
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

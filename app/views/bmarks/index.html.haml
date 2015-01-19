@@ -11,9 +11,7 @@
         %th= Bmark.human_attribute_name(:name)
         %th= Bmark.human_attribute_name(:track)
         %th= Bmark.human_attribute_name(:stage)
-        %th
-        %th
-        %th
+        %th.actions
 
     %tbody
       - @bmarks.each do |bmark|
@@ -21,6 +19,13 @@
           %td= bmark.name
           %td= bmark.track.name
           %td= bmark.stage.name
-          %td= link_to t('show'), bmark
-          %td= link_to t('edit'), edit_bmark_path(bmark)
-          %td= link_to t('destroy'), bmark, :data => { confirm: t('are_you_sure') }, :method => :delete
+          %td.action
+            = link_to bmark, {title: t('show')} do
+              %span.glyphicon.glyphicon-info-sign{aria: {hidden: 'true'} }
+              %span.sr-only>= t('show')
+            = link_to edit_bmark_path(bmark), {title: t('edit')} do
+              %span.glyphicon.glyphicon-pencil{aria: {hidden: 'true'} }
+              %span.sr-only>= t('edit')
+            = link_to bmark, {data: { confirm: t('are_you_sure') }, title: t('destroy')}, method: :delete do
+              %span.glyphicon.glyphicon-trash{aria: {hidden: 'true'} }
+              %span.sr-only>= t('destroy')

@@ -9,14 +9,19 @@
     %thead
       %tr
         %th= Stage.human_attribute_name(:name)
-        %th
-        %th
-        %th
+        %th.actions
 
     %tbody
       - @stages.each do |stage|
         %tr
           %td= stage.name
-          %td= link_to t('show'), stage
-          %td= link_to t('edit'), edit_stage_path(stage)
-          %td= link_to t('destroy'), stage, :data => { confirm: t('are_you_sure') }, :method => :delete
+          %td.actions
+            = link_to stage, {title: t('show')} do
+              %span.glyphicon.glyphicon-info-sign{aria: {hidden: 'true'} }
+              %span.sr-only>= t('show')
+            = link_to edit_stage_path(stage), {title: t('edit')} do
+              %span.glyphicon.glyphicon-pencil{aria: {hidden: 'true'} }
+              %span.sr-only>= t('edit')
+            = link_to stage, {data: { confirm: t('are_you_sure') }, title: t('destroy')}, method: :delete do
+              %span.glyphicon.glyphicon-trash{aria: {hidden: 'true'} }
+              %span.sr-only>= t('destroy')

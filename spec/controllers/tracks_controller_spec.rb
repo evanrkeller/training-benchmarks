@@ -14,7 +14,7 @@ RSpec.describe TracksController, :type => :controller do
   context 'when signed in' do
 
     before do
-      sign_in FactoryGirl.create(:user)
+      sign_in FactoryGirl.create(:user, track: nil)
     end
 
     # This should return the minimal set of attributes required to create a valid

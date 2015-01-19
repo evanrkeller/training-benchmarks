@@ -1,0 +1,35 @@
+.page-header
+  = link_to users_path, :class => 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    =t('back')
+  = link_to edit_user_path(@user), :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    =t('edit')
+  %h1= t('show_model', model: User.model_name.human)
+
+%dl.dl-horizontal
+  %dt= User.human_attribute_name(:email) + ':'
+  %dd= @user.email
+  %dt= User.human_attribute_name(:track) + ':'
+  %dd= @user.track ? @user.track.name : 'Undeclared'
+
+%h2= User.human_attribute_name(:bmarks) # i18n-tasks-use t('activerecord.attributes.user.bmarks') # let i18n-tasks know the key is used
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %th= Bmark.human_attribute_name(:name)
+    %th.actions
+  %tbody
+    - @user.bmarks.each do |benchmark|
+      %tr
+        %td= benchmark.name
+        %td.actions
+          -if @user.completed_benchmarks.include?(benchmark)
+            %span.glyphicon.glyphicon-ok.completed{aria: {hidden: 'true'} }
+            %span.sr-only>= t('completed')
+          -else
+            = form_for SignOff.new(bmark: benchmark, user: @user) do |f|
+              = f.hidden_field :bmark_id
+              = f.hidden_field :user_id
+              = f.submit t('sign_off')
+
+

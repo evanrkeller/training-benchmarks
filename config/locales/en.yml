@@ -3,15 +3,20 @@ en:
   activerecord:
     models:
       bmark: Benchmark
+    attributes:
+      user:
+        bmarks: Benchmarks
   app_title: Training Benchmarks
   are_you_sure: Are you sure?
   back: Back
   close: Close
+  completed: Completed
   destroy: Destroy
   edit: Edit
   edit_model: Edit %{model}
   new_model: New %{model}
   show: Show
   show_model: Show %{model}
+  sign_off: Sign Off
   sign_out: Sign Out
   toggle_navigation: Toggle navigation
