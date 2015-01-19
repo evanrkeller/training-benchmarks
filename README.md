@@ -22,3 +22,10 @@
 
     # Run the test suites
     rake
+
+## Hosting with Heroku
+
+  In order to host with Heroku, you need to configure email for Devise.
+
+    heroku addons:add sendgrid
+    heroku config:add DOMAIN_NAME=example.com MAILER_SENDER=notify@example.com
