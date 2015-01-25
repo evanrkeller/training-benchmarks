@@ -8,8 +8,14 @@
   %h1= t('show_model', model: User.model_name.human)
 
 %dl.dl-horizontal
+  %dt= User.human_attribute_name(:first_name) + ':'
+  %dd= @user.first_name
+  %dt= User.human_attribute_name(:last_name) + ':'
+  %dd= @user.last_name
   %dt= User.human_attribute_name(:email) + ':'
   %dd= @user.email
+  %dt= User.human_attribute_name(:phone) + ':'
+  %dd= @user.phone
   %dt= User.human_attribute_name(:track) + ':'
   %dd= @user.track ? @user.track.name : 'Undeclared'
 
