@@ -35,7 +35,7 @@ gem 'rails_12factor', group: :production
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-gem 'unicorn'
+gem 'unicorn-rails'
 gem 'rack-timeout'
 
 # Use Capistrano for deployment
