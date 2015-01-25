@@ -1,1 +1,1 @@
-Rack::Timeout.timeout = 10  # seconds
+Rack::Timeout.timeout = Rails.env.test? ? 30 : 10  # seconds
