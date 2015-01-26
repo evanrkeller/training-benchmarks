@@ -59,6 +59,11 @@ RSpec.describe UsersController, :type => :controller do
         get :new, {}
         expect(assigns(:user)).to be_a_new(User)
       end
+
+      it "assigns 'skip_track' to be true" do
+        get :new, {}
+        expect(assigns(:skip_track)).to eq(true)
+      end
     end
 
     describe "GET edit" do
@@ -66,6 +71,12 @@ RSpec.describe UsersController, :type => :controller do
         user = User.create! valid_attributes
         get :edit, {:id => user.to_param}
         expect(assigns(:user)).to eq(user)
+      end
+
+      it "assigns 'skip_track' to not be true" do
+        user = User.create! valid_attributes
+        get :edit, {:id => user.to_param}
+        expect(assigns(:skip_track)).not_to eq(true)
       end
     end
 
@@ -85,7 +96,7 @@ RSpec.describe UsersController, :type => :controller do
 
         it "redirects to the created user" do
           post :create, {:user => valid_attributes}
-          expect(response).to redirect_to(User.last)
+          expect(response).to redirect_to(new_user_url)
         end
       end
 
