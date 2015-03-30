@@ -7,6 +7,7 @@ RSpec.describe User, :type => :model do
   it { should validate_presence_of :phone }
   it { should have_many(:bmarks).through(:track) }
   it { should have_many(:sign_offs) }
+  it { should have_and_belong_to_many(:practices) }
 
   describe '#completed_bmarks' do
     it "should list benchmarks that have been signed off" do

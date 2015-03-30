@@ -1,0 +1,29 @@
+.page-header
+  = link_to new_practice_path, :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    = t('new_model', model: Practice.model_name.human)
+  %h1= Practice.model_name.human.pluralize
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th= Practice.human_attribute_name(:start_time)
+        %th= Practice.human_attribute_name(:end_time)
+        %th.actions
+
+    %tbody
+      - @practices.each do |practice|
+        %tr
+          %td= practice.start_time
+          %td= practice.end_time
+          %td.action
+            = link_to practice, {title: t('show')} do
+              %span.glyphicon.glyphicon-info-sign{aria: {hidden: 'true'} }
+              %span.sr-only>= t('show')
+            = link_to edit_practice_path(practice), {title: t('edit')} do
+              %span.glyphicon.glyphicon-pencil{aria: {hidden: 'true'} }
+              %span.sr-only>= t('edit')
+            = link_to practice, {data: { confirm: t('are_you_sure') }, title: t('destroy')}, method: :delete do
+              %span.glyphicon.glyphicon-trash{aria: {hidden: 'true'} }
+              %span.sr-only>= t('destroy')

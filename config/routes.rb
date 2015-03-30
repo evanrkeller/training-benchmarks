@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :practices
+
   resources :bmarks, :path => :benchmarks
 
   resources :stages
