@@ -23,3 +23,4 @@
   - @practice.users.each do |user|
     %li
       = user.full_name
+      = link_to t('remove'), remove_user_practice_path(@practice, user_id: user.id), method: :delete

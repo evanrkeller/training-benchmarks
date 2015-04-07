@@ -1,5 +1,5 @@
 class PracticesController < ApplicationController
-  before_action :set_practice, only: [:show, :edit, :update, :destroy, :add_user]
+  before_action :set_practice, only: [:show, :edit, :update, :destroy, :add_user, :remove_user]
 
   respond_to :html
 
@@ -38,6 +38,11 @@ class PracticesController < ApplicationController
 
   def add_user
     @practice.users << User.find(params[:user_id])
+    respond_with(@practice)
+  end
+
+  def remove_user
+    @practice.users.delete(User.find(params[:user_id]))
     respond_with(@practice)
   end
 

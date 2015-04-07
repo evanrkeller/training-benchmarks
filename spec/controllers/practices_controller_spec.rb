@@ -170,6 +170,23 @@ RSpec.describe PracticesController, :type => :controller do
       end
 
     end
+
+    describe "DELETE remove_user" do
+      it "removes a user from the schedule for a practice" do
+        practice = FactoryGirl.create(:practice)
+        user = FactoryGirl.create(:user, practices: [practice])
+        delete :remove_user, {id: practice.to_param, user_id: user.id}
+        expect(practice.unregistered_users).to include(user)
+      end
+
+      it "redirects to the practice" do
+        practice = FactoryGirl.create(:practice)
+        user = FactoryGirl.create(:user, practices: [practice])
+        delete :remove_user, {id: practice.to_param, user_id: user.id}
+        expect(response).to redirect_to(practice)
+      end
+
+    end
   end
 
 end

@@ -27,7 +27,7 @@ RSpec.describe "practices/show", :type => :view do
       assert_select "ul.unscheduled>li", :text => /#{@users[3].full_name}/, :count => 0
     end
 
-    it "has a schedule button for users" do
+    it "has a schedule button for unregistered users" do
       render
       assert_select "a[href=?]", add_user_practice_path(@practice, user_id: @users[0].id)
     end
@@ -38,6 +38,11 @@ RSpec.describe "practices/show", :type => :view do
       assert_select "ul.scheduled>li", :text => /#{@users[1].full_name}/, :count => 1
       assert_select "ul.scheduled>li", :text => /#{@users[2].full_name}/, :count => 0
       assert_select "ul.scheduled>li", :text => /#{@users[3].full_name}/, :count => 1
+    end
+
+    it "has a remove button for registered users" do
+      render
+      assert_select "a[href=?]", remove_user_practice_path(@practice, user_id: @users[1].id)
     end
 
   end
