@@ -159,7 +159,7 @@ RSpec.describe PracticesController, :type => :controller do
         practice = FactoryGirl.create(:practice)
         user = FactoryGirl.create(:user)
         put :add_user, {id: practice.to_param, user_id: user.id}
-        practice.users.should include(user)
+        expect(practice.users).to include(user)
       end
 
       it "redirects to the practice" do
