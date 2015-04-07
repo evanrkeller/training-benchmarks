@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
   def completed_benchmarks
     sign_offs.map(&:bmark)
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

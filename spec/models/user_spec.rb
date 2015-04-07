@@ -17,4 +17,11 @@ RSpec.describe User, :type => :model do
       expect(user.completed_benchmarks).to eq [completed_benchmark_one, completed_benchmark_two]
     end
   end
+
+  describe '#full_name' do
+    it 'should return a combination of the first name and last name' do
+      user = FactoryGirl.create(:user)
+      expect(user.full_name).to eq "#{user.first_name} #{user.last_name}"
+    end
+  end
 end

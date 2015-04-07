@@ -154,6 +154,22 @@ RSpec.describe PracticesController, :type => :controller do
       end
     end
 
+    describe "PUT add_user" do
+      it "adds a user to the schedule for a practice" do
+        practice = FactoryGirl.create(:practice)
+        user = FactoryGirl.create(:user)
+        put :add_user, {id: practice.to_param, user_id: user.id}
+        practice.users.should include(user)
+      end
+
+      it "redirects to the practice" do
+        practice = FactoryGirl.create(:practice)
+        user = FactoryGirl.create(:user)
+        put :add_user, {id: practice.to_param, user_id: user.id}
+        expect(response).to redirect_to(practice)
+      end
+
+    end
   end
 
 end

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :practices
+  resources :practices do
+    member do
+      put :add_user
+    end
+  end
 
   resources :bmarks, :path => :benchmarks
 
