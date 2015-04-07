@@ -1,0 +1,26 @@
+.page-header
+  = link_to practices_path, :class => 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    =t('back')
+  = link_to edit_practice_path(@practice), :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    =t('edit')
+  %h1= t('show_model', model: Practice.model_name.human)
+
+%dl.dl-horizontal
+  %dt= Practice.human_attribute_name(:start_time) + ':'
+  %dd= @practice.start_time
+  %dt= Practice.human_attribute_name(:end_time) + ':'
+  %dd= @practice.end_time
+
+%ul.unscheduled
+  - @practice.unregistered_users.each do |user|
+    %li
+      = user.full_name
+      = link_to t('schedule'), add_user_practice_path(@practice, user_id: user.id), method: :put
+
+%ul.scheduled
+  - @practice.users.each do |user|
+    %li
+      = user.full_name
+      = link_to t('remove'), remove_user_practice_path(@practice, user_id: user.id), method: :delete

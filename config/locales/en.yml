@@ -15,6 +15,8 @@ en:
   edit: Edit
   edit_model: Edit %{model}
   new_model: New %{model}
+  remove: Remove
+  schedule: Schedule
   show: Show
   show_model: Show %{model}
   sign_off: Sign Off

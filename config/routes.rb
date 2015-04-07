@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :practices do
+    member do
+      put :add_user
+      delete :remove_user
+    end
+  end
+
   resources :bmarks, :path => :benchmarks
 
   resources :stages
