@@ -14,6 +14,7 @@ en:
   destroy: Destroy
   edit: Edit
   edit_model: Edit %{model}
+  feedback: Feedback
   new_model: New %{model}
   remove: Remove
   schedule: Schedule
