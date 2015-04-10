@@ -6,6 +6,7 @@ RSpec.describe User, :type => :model do
   it { should validate_presence_of :last_name }
   it { should validate_presence_of :phone }
   it { should have_many(:bmarks).through(:track) }
+  it { should have_many(:feedbacks).dependent(:destroy) }
   it { should have_many(:sign_offs) }
   it { should have_and_belong_to_many(:practices) }
 

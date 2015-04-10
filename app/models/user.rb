@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   belongs_to :track
   has_many :bmarks, through: :track
+  has_many :feedbacks, dependent: :destroy
   has_many :sign_offs
   has_and_belongs_to_many :practices
   validates :first_name, :last_name, :phone, presence: true
