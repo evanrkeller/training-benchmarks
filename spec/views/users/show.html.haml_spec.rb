@@ -40,4 +40,21 @@ RSpec.describe "users/show", :type => :view do
 
   end
 
+  describe 'feedbacks' do
+    before do
+      @practice = FactoryGirl.create(:practice, users: [@user])
+      FactoryGirl.create(:feedback, user: @user, practice: @practice, note: 'Trainee did well')
+    end
+
+    it 'display for the user' do
+      render
+      expect(rendered).to match('Trainee did well')
+    end
+
+    it 'show practice session the feedback was for' do
+      render
+      expect(rendered).to match("#{@practice.date}")
+    end
+  end
+
 end
