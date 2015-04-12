@@ -25,8 +25,12 @@ RSpec.describe FeedbacksController, :type => :controller do
       FactoryGirl.create(:user)
     }
 
+    let(:practice) {
+      FactoryGirl.create(:practice)
+    }
+
     let(:valid_attributes) {
-      {practice_id: FactoryGirl.create(:practice).id, note: 'Trainee did well'}
+      {practice_id: practice.id, note: 'Trainee did well'}
     }
 
     let(:invalid_attributes) {
@@ -49,6 +53,12 @@ RSpec.describe FeedbacksController, :type => :controller do
       it "assigns a new feedback as @feedback" do
         get :new, {user_id: user.id}
         expect(assigns(:feedback)).to be_a_new(Feedback)
+      end
+
+      it "assigns existing feedback as @feedback if a feedback already exists" do
+        feedback = FactoryGirl.create(:feedback, user: user, practice: practice)
+        get :new, {user_id: user.id, practice_id: practice.id}
+        expect(assigns(:feedback)).to eq(feedback)
       end
     end
 
