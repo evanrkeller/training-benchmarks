@@ -45,5 +45,10 @@ RSpec.describe "practices/show", :type => :view do
       assert_select "a[href=?]", remove_user_practice_path(@practice, user_id: @users[1].id)
     end
 
+    it "has a feedback link for registered users" do
+      render
+      assert_select "a[href=?]", new_user_feedback_path(@users[1], practice_id: @practice.id)
+    end
+
   end
 end

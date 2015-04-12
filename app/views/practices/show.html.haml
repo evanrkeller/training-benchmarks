@@ -24,3 +24,4 @@
     %li
       = user.full_name
       = link_to t('remove'), remove_user_practice_path(@practice, user_id: user.id), method: :delete
+      = link_to t('feedback'), new_user_feedback_path(user, practice_id: @practice)

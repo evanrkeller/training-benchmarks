@@ -6,6 +6,7 @@ en:
     attributes:
       user:
         bmarks: Benchmarks
+        feedbacks: Feedback
   app_title: Training Benchmarks
   are_you_sure: Are you sure?
   back: Back
@@ -14,6 +15,7 @@ en:
   destroy: Destroy
   edit: Edit
   edit_model: Edit %{model}
+  feedback: Feedback
   new_model: New %{model}
   remove: Remove
   schedule: Schedule

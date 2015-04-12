@@ -39,3 +39,13 @@
               = f.submit t('sign_off')
 
 
+%h2= User.human_attribute_name(:feedbacks) # i18n-tasks-use t('activerecord.attributes.user.feedbacks') # let i18n-tasks know the key is used
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %th= Feedback.human_attribute_name(:note)
+    %th= Feedback.human_attribute_name(:practice)
+  %tbody
+    - @user.feedbacks.each do |feedback|
+      %tr
+        %td= feedback.note
+        %td= feedback.practice.date

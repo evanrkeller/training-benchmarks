@@ -7,4 +7,7 @@ class Practice < ActiveRecord::Base
     User.all.reject {|user| users.include? user}
   end
 
+  def date
+    start_time.to_date
+  end
 end

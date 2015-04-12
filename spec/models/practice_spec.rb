@@ -13,4 +13,11 @@ RSpec.describe Practice, :type => :model do
       expect(practice.unregistered_users).to eq [unregistered_user]
     end
   end
+
+  describe '#date' do
+    it "should return the date associated with the start time for the practice" do
+      practice = FactoryGirl.create(:practice)
+      expect(practice.date).to eq practice.start_time.to_date
+    end
+  end
 end

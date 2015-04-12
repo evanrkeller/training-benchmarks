@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :practices do
     member do
       put :add_user
@@ -25,7 +26,9 @@ Rails.application.routes.draw do
     delete '/registrations(.:format)' => 'devise/registrations#destroy'
   end
 
-  resources :users
+  resources :users do
+    resources :feedbacks, except: [:index, :destroy]
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

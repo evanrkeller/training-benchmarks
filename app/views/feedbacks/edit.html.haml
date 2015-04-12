@@ -1,0 +1,10 @@
+.page-header
+  = link_to user_path(@user), :class => 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    =t('back')
+  = link_to [@user, @feedback], :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-info-sign
+    =t('show')
+  %h1= t('edit_model', model: Feedback.model_name.human)
+
+= render 'form'
