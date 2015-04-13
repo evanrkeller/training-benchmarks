@@ -37,11 +37,12 @@ class StagesController < ApplicationController
   end
 
   private
-    def set_stage
-      @stage = Stage.find(params[:id])
-    end
 
-    def stage_params
-      params.require(:stage).permit(:name, :position)
-    end
+  def set_stage
+    @stage = Stage.find(params[:id])
+  end
+
+  def stage_params
+    params.require(:stage).permit(:name, :position)
+  end
 end

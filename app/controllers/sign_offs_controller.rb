@@ -1,5 +1,4 @@
 class SignOffsController < ApplicationController
-
   respond_to :html
 
   def create
@@ -13,5 +12,4 @@ class SignOffsController < ApplicationController
   def sign_off_params
     params.require(:sign_off).permit(:bmark_id, :user_id)
   end
-
 end

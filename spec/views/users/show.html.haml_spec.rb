@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe "users/show", :type => :view do
+RSpec.describe 'users/show', type: :view do
   before(:each) do
-    @example_track = Track.create!({name: "Example Track"})
+    @example_track = Track.create!(name: 'Example Track')
     @user = assign(:user, FactoryGirl.create(:user, track: @example_track))
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     expect(rendered).to match(/First name/)
     expect(rendered).to match(/Last name/)
@@ -22,22 +22,20 @@ RSpec.describe "users/show", :type => :view do
   end
 
   describe 'benchmarks' do
-
     before do
       @example_benchmark = FactoryGirl.create(:bmark, track: @example_track)
     end
 
-    it "display for the selected track" do
+    it 'display for the selected track' do
       render
       expect(rendered).to match("#{@example_benchmark.name}")
     end
 
-    it "that have been signed off are indicated" do
+    it 'that have been signed off are indicated' do
       FactoryGirl.create(:sign_off, bmark: @example_benchmark, user: @user)
       render
-      expect(rendered).to match("Completed")
+      expect(rendered).to match('Completed')
     end
-
   end
 
   describe 'feedbacks' do
@@ -56,5 +54,4 @@ RSpec.describe "users/show", :type => :view do
       expect(rendered).to match("#{@practice.date}")
     end
   end
-
 end
