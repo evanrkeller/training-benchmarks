@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :build_user, only: [:create]
 
   # GET /users
   # GET /users.json
@@ -25,9 +26,6 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-    @user.password = Devise.friendly_token
-
     respond_to do |format|
       if @user.save
         format.html { redirect_to new_user_url, notice: 'User was successfully created.' }
@@ -68,6 +66,10 @@ class UsersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def build_user
+    @user = User.new(user_params.merge(password: Devise.friendly_token))
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

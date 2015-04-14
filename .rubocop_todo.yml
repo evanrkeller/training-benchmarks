@@ -13,10 +13,6 @@ Lint/ParenthesesAsGroupedExpression:
 Lint/UselessAssignment:
   Enabled: true
 
-# Offense count: 1
-Metrics/AbcSize:
-  Max: 17
-
 # Offense count: 127
 # Configuration parameters: AllowURI, URISchemes.
 Metrics/LineLength:
@@ -25,7 +21,8 @@ Metrics/LineLength:
 # Offense count: 2
 # Configuration parameters: CountComments.
 Metrics/MethodLength:
-  Max: 15
+  Exclude:
+    - db/migrate/20141230131951_devise_create_users.rb
 
 # Offense count: 2
 # Configuration parameters: Include.
