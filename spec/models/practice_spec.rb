@@ -8,7 +8,7 @@ RSpec.describe Practice, type: :model do
   describe '#unregistered_users' do
     it 'should return a list of users that are not registered for the practice' do
       practice = FactoryGirl.create(:practice)
-      registered_user = FactoryGirl.create(:user, practices: [practice])
+      FactoryGirl.create(:user, practices: [practice])
       unregistered_user = FactoryGirl.create(:user)
       expect(practice.unregistered_users).to eq [unregistered_user]
     end

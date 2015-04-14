@@ -23,7 +23,7 @@ describe 'User management', type: :feature do
 
     it 'has a button for signing off a user' do
       click_button 'Sign Off'
-      within ('td.actions') do
+      within('td.actions') do
         expect(page).to have_text 'Complete'
       end
     end

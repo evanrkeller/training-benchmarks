@@ -4,7 +4,7 @@ RSpec.describe 'feedbacks/new', type: :view do
   before(:each) do
     practice = FactoryGirl.create(:practice)
     @user = assign(:user, FactoryGirl.create(:user, practices: [practice]))
-    feedback = assign(:feedback, FactoryGirl.build(:feedback, user: @user))
+    assign(:feedback, FactoryGirl.build(:feedback, user: @user))
   end
 
   it 'renders new feedback form' do

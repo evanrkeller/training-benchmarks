@@ -7,11 +7,11 @@
 
 # Offense count: 1
 Lint/ParenthesesAsGroupedExpression:
-  Enabled: false
+  Enabled: true
 
 # Offense count: 2
 Lint/UselessAssignment:
-  Enabled: false
+  Enabled: true
 
 # Offense count: 1
 Metrics/AbcSize:
