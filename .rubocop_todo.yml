@@ -21,11 +21,6 @@ Metrics/MethodLength:
 Rails/HasAndBelongsToMany:
   Enabled: false
 
-# Offense count: 4
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Rails/TimeZone:
-  Enabled: false
-
 # Offense count: 28
 Style/Documentation:
   Enabled: false

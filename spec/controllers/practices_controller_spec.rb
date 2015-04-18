@@ -19,7 +19,7 @@ RSpec.describe PracticesController, type: :controller do
     # Practice. As you add validations to Practice, be sure to
     # adjust the attributes here as well.
     let(:valid_attributes) do
-      { start_time: Time.new(2015, 1, 15, 19, 0, 0), end_time: Time.new(2015, 1, 15, 21, 0, 0) }
+      { start_time: Time.zone.local(2015, 1, 15, 19, 0, 0), end_time: Time.zone.local(2015, 1, 15, 21, 0, 0) }
     end
 
     let(:invalid_attributes) do
@@ -98,7 +98,7 @@ RSpec.describe PracticesController, type: :controller do
     describe 'PUT update' do
       describe 'with valid params' do
         let(:new_attributes) do
-          { start_time: Time.new(2015, 1, 16, 19, 0, 0), end_time: Time.new(2015, 1, 16, 21, 0, 0) }
+          { start_time: Time.zone.local(2015, 1, 16, 19, 0, 0), end_time: Time.zone.local(2015, 1, 16, 21, 0, 0) }
         end
 
         it 'updates the requested practice' do
