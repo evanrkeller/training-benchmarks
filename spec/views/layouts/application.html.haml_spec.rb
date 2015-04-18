@@ -9,7 +9,7 @@ RSpec.describe 'layouts/application' do
 
   it "doesn't have an untranslated title" do
     render
-    expect(rendered).to_not match(/<title>t\('app_title'\)<\/title>/)
+    expect(rendered).to_not match(%r{<title>t\('app_title'\)</title>})
   end
 
   it 'has the proper page title' do
