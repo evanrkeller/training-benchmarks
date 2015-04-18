@@ -8,3 +8,6 @@ AllCops:
     - 'bin/**/*'
     - 'vendor/bundle/**/*'
   RunRailsCops: true
+Metrics/LineLength:
+  Max: 120
+
