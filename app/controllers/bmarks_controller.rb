@@ -37,11 +37,12 @@ class BmarksController < ApplicationController
   end
 
   private
-    def set_bmark
-      @bmark = Bmark.find(params[:id])
-    end
 
-    def bmark_params
-      params.require(:bmark).permit(:name, :description, :track_id, :stage_id)
-    end
+  def set_bmark
+    @bmark = Bmark.find(params[:id])
+  end
+
+  def bmark_params
+    params.require(:bmark).permit(:name, :description, :track_id, :stage_id)
+  end
 end

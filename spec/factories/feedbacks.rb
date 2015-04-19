@@ -2,7 +2,6 @@ FactoryGirl.define do
   factory :feedback do
     association :user
     association :practice
-    note "MyText"
+    note 'MyText'
   end
-
 end

@@ -59,6 +59,7 @@ group :development, :test do
 
   gem 'pry'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'rubocop', require: false
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

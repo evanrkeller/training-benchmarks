@@ -3,5 +3,4 @@ FactoryGirl.define do
     association :user
     association :bmark
   end
-
 end

@@ -1,0 +1,13 @@
+inherit_from: .rubocop_todo.yml
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - db/schema.rb
+    - 'bin/**/*'
+    - 'vendor/bundle/**/*'
+  RunRailsCops: true
+Metrics/LineLength:
+  Max: 120
+

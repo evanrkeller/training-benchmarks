@@ -47,11 +47,12 @@ class PracticesController < ApplicationController
   end
 
   private
-    def set_practice
-      @practice = Practice.find(params[:id])
-    end
 
-    def practice_params
-      params.require(:practice).permit(:start_time, :end_time)
-    end
+  def set_practice
+    @practice = Practice.find(params[:id])
+  end
+
+  def practice_params
+    params.require(:practice).permit(:start_time, :end_time)
+  end
 end

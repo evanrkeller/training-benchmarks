@@ -10,7 +10,6 @@ class FeedbacksController < ApplicationController
 
   def new
     @feedback = @user.feedbacks.where(practice_id: params[:practice_id]).first || @user.feedbacks.new
-    puts @feedback.persisted?
     respond_with(@user, @feedback)
   end
 
@@ -29,16 +28,17 @@ class FeedbacksController < ApplicationController
   end
 
   private
-    def set_user
-      @user = User.find(params[:user_id])
-    end
 
-    def set_feedback
-      @feedback = @user.feedbacks.find(params[:id])
-    end
+  def set_user
+    @user = User.find(params[:user_id])
+  end
 
-    def feedback_params
-      params.require(:user_id)
-      params.require(:feedback).permit(:practice_id, :note)
-    end
+  def set_feedback
+    @feedback = @user.feedbacks.find(params[:id])
+  end
+
+  def feedback_params
+    params.require(:user_id)
+    params.require(:feedback).permit(:practice_id, :note)
+  end
 end
