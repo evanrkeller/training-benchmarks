@@ -52,6 +52,7 @@ group :development, :test do
   gem 'byebug'
 
   gem 'capybara'
+  gem 'capybara-webkit'
 
   gem 'database_cleaner'
 
