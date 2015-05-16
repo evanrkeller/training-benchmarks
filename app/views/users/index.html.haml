@@ -8,14 +8,14 @@
   %table.table.table-striped.table-bordered.table-hover
     %thead
       %tr
-        %th= User.human_attribute_name(:email)
+        %th= User.human_attribute_name(:full_name) # i18n-tasks-use t('activerecord.attributes.user.full_name')
         %th= User.human_attribute_name(:track)
         %th.actions
 
     %tbody
       - @users.each do |user|
         %tr
-          %td= user.email
+          %td= user.full_name
           %td= user.track ? user.track.name : 'Undeclared'
           %td.actions
             = link_to user, {title: t('show')} do
