@@ -51,6 +51,7 @@ RSpec.configure do |config|
 
   config.before(:each, js: true) do
     DatabaseCleaner.strategy = :truncation
+    page.driver.block_unknown_urls
   end
 
   config.before(:each) do
