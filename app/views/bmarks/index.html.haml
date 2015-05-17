@@ -26,6 +26,6 @@
             = link_to edit_bmark_path(bmark), {title: t('edit')} do
               %span.glyphicon.glyphicon-pencil{aria: {hidden: 'true'} }
               %span.sr-only>= t('edit')
-            = link_to bmark, {data: { confirm: t('are_you_sure') }, title: t('destroy')}, method: :delete do
+            = link_to bmark, {data: { confirm: t('are_you_sure') }, title: t('destroy'), method: :delete} do
               %span.glyphicon.glyphicon-trash{aria: {hidden: 'true'} }
               %span.sr-only>= t('destroy')
