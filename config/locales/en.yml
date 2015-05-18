@@ -7,6 +7,7 @@ en:
       user:
         bmarks: Benchmarks
         feedbacks: Feedback
+        full_name: Name
   app_title: Training Benchmarks
   are_you_sure: Are you sure?
   back: Back

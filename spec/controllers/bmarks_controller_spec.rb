@@ -33,9 +33,26 @@ RSpec.describe BmarksController, type: :controller do
 
     describe 'GET index' do
       it 'assigns all bmarks as @bmarks' do
-        bmark = Bmark.create! valid_attributes
+        bmark = FactoryGirl.create(:bmark, valid_attributes)
         get :index, {}, valid_session
         expect(assigns(:bmarks)).to eq([bmark])
+      end
+
+      it 'orders benchmarks by stage and then track' do
+        stage_a = FactoryGirl.create(:stage, name: 'Stage A')
+        stage_b = FactoryGirl.create(:stage, name: 'Stage B')
+        stage_c = FactoryGirl.create(:stage, name: 'Stage C')
+        track_a = FactoryGirl.create(:track, name: 'Track A')
+        track_b = FactoryGirl.create(:track, name: 'Track B')
+        [track_b, track_a].each do |track|
+          [stage_c, stage_a, stage_b].each do |stage|
+            FactoryGirl.create(:bmark, track: track, stage: stage)
+          end
+        end
+        get :index
+        expect(assigns(:bmarks).map(&:name)).to eq(%w(5 2 6 3 4 1).map do |i|
+          "Example Benchmark Number #{i}"
+        end)
       end
     end
 
