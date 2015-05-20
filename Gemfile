@@ -23,6 +23,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'haml-rails'
 gem 'bootstrap-generators', '~> 3.3.1'
+gem 'date_range_formatter'
 
 gem 'devise'
 gem 'acts_as_list'
