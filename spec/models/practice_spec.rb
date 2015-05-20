@@ -20,4 +20,13 @@ RSpec.describe Practice, type: :model do
       expect(practice.date).to eq practice.start_time.to_date
     end
   end
+
+  describe '#time' do
+    it 'should return the time in a proper format' do
+      practice = FactoryGirl.create(:practice, start_time: '2015-01-01 15:00', end_time: '2015-01-01 17:00')
+      expect(practice.time).to eq 'January 1, 2015,  3:00 pm- 5:00 pm'
+      practice_two = FactoryGirl.create(:practice, start_time: '2015-01-02 15:00', end_time: '2015-01-02 17:00')
+      expect(practice_two.time).to eq 'January 2, 2015,  3:00 pm- 5:00 pm'
+    end
+  end
 end
