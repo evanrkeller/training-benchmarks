@@ -28,4 +28,26 @@ describe 'User management', type: :feature do
       end
     end
   end
+
+  describe 'list of users' do
+    it 'deletes a user after the intention is confirmed', js: true do
+      @new_user = FactoryGirl.create(:user, first_name: 'Remove', last_name: 'Me')
+      visit users_path
+      within(:xpath, "//tr[contains(.,'Remove Me')]") do
+        click_link 'Destroy'
+      end
+      expect(current_path).to eq users_path
+      expect(page).not_to have_text 'Remove Me'
+    end
+
+    it 'does not delete a user if the intention is not confirmed', js: true do
+      @new_user = FactoryGirl.create(:user, first_name: 'Save', last_name: 'Me')
+      visit users_path
+      page.evaluate_script 'window.confirm = function(msg) { return false; }'
+      within(:xpath, "//tr[contains(.,'Save Me')]") do
+        click_link 'Destroy'
+      end
+      expect(page).to have_text 'Save Me'
+    end
+  end
 end

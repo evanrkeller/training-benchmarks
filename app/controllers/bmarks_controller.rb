@@ -4,7 +4,7 @@ class BmarksController < ApplicationController
   respond_to :html
 
   def index
-    @bmarks = Bmark.all
+    @bmarks = Bmark.by_stage_and_track.includes(:stage, :track).all
     respond_with(@bmarks)
   end
 
