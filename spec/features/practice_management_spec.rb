@@ -15,7 +15,9 @@ describe 'Practice management', type: :feature do
     it 'deletes a practice after the intention is confirmed', js: true do
       @practice = FactoryGirl.create(:practice)
       visit practices_path
-      click_link 'Destroy'
+      within(:xpath, "//tr[contains(.,'March 10, 2015,  7:00 pm- 8:00 pm')]") do
+        click_link 'Destroy'
+      end
       expect(current_path).to eq practices_path
       expect(page).not_to have_text 'March 10, 2015,  7:00 pm- 8:00 pm'
     end
@@ -24,7 +26,9 @@ describe 'Practice management', type: :feature do
       @practice = FactoryGirl.create(:practice)
       visit practices_path
       page.evaluate_script 'window.confirm = function(msg) { return false; }'
-      click_link 'Destroy'
+      within(:xpath, "//tr[contains(.,'March 10, 2015,  7:00 pm- 8:00 pm')]") do
+        click_link 'Destroy'
+      end
       expect(page).to have_text 'March 10, 2015,  7:00 pm- 8:00 pm'
     end
   end
