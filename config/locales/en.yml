@@ -13,11 +13,16 @@ en:
   back: Back
   close: Close
   completed: Completed
+  date_range:
+    with_time:
+      hour: "%l:%M %P"
+      same_days: "%{month} %{day}, %{year}, %{from_hour}-%{until_hour}"
   destroy: Destroy
   edit: Edit
   edit_model: Edit %{model}
   feedback: Feedback
   new_model: New %{model}
+  practice_time: Practice Time
   remove: Remove
   schedule: Schedule
   show: Show

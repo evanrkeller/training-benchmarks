@@ -70,6 +70,8 @@ GEM
     coffee-script-source (1.9.1.1)
     columnize (0.9.0)
     database_cleaner (1.4.1)
+    date_range_formatter (0.1.1)
+      activesupport (>= 3.2.0)
     debug_inspector (0.0.2)
     devise (3.4.1)
       bcrypt (~> 3.0)
@@ -282,6 +284,7 @@ DEPENDENCIES
   capybara-webkit
   coffee-rails (~> 4.1.0)
   database_cleaner
+  date_range_formatter
   devise
   factory_girl_rails (~> 4.0)
   gravatarify (~> 3.0.0)

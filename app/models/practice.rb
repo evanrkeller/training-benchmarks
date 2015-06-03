@@ -9,4 +9,8 @@ class Practice < ActiveRecord::Base
   def date
     start_time.to_date
   end
+
+  def time
+    DateRangeFormatter.format(start_time, end_time, :with_time)
+  end
 end
