@@ -1,5 +1,6 @@
 class Practice < ActiveRecord::Base
   has_and_belongs_to_many :users
+  has_many :feedbacks, dependent: :destroy
   validates :start_time, :end_time, presence: true
 
   def unregistered_users
