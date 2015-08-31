@@ -13,3 +13,5 @@
 /tmp
 
 /coverage
+/config/deploy/*
+/config/database.yml
