@@ -42,6 +42,8 @@ gem 'rails_12factor', group: :production
 gem 'rack-timeout'
 
 gem 'puma'
+gem 'foreman'
+
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development
 gem 'capistrano-puma'
