@@ -31,17 +31,18 @@ gem 'acts_as_list'
 gem 'gravatarify', '~> 3.0.0'
 
 gem 'rails_12factor', group: :production
-gem 'capistrano', group: :development
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Unicorn as the app server
-gem 'unicorn-rails'
 gem 'rack-timeout'
 
+gem 'puma'
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'capistrano-rails', group: :development
+gem 'capistrano-puma'
+gem 'capistrano-rbenv'
+gem 'capistrano-bundler'
 
 group :test do
   gem 'simplecov', require: false
