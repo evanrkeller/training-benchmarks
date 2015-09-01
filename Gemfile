@@ -46,7 +46,7 @@ gem 'foreman'
 
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development
-gem 'capistrano-puma'
+gem 'capistrano3-puma'
 gem 'capistrano-rbenv'
 gem 'capistrano-bundler'
 
