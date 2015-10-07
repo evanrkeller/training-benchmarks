@@ -45,10 +45,12 @@ gem 'puma'
 gem 'foreman'
 
 # Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
-gem 'capistrano3-puma'
-gem 'capistrano-rbenv'
-gem 'capistrano-bundler'
+group :development do
+  gem 'capistrano-rails', require: false
+  gem 'capistrano3-puma', github: 'seuros/capistrano-puma'
+  gem 'capistrano-rbenv', require: false
+  gem 'capistrano-bundler', require: false
+end
 
 group :test do
   gem 'simplecov', require: false

@@ -24,7 +24,7 @@ set :scm, :git
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/puma.rb')
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
 
 # Default value for linked_dirs is []
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system')
@@ -40,7 +40,7 @@ set :rbenv_type, :user
 set :rbenv_ruby, File.read('.ruby-version').strip
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} "\
                    "#{fetch(:rbenv_path)}/bin/rbenv exec"
-set :rbenv_map_bins, %w(rake gem bundle ruby rails)
+set :rbenv_map_bins, %w(rake gem bundle puma pumactl ruby rails)
 set :rbenv_roles, :all # default value
 
 namespace :deploy do
@@ -50,37 +50,6 @@ namespace :deploy do
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
-    end
-  end
-end
-
-namespace :foreman do
-  desc "Export the Procfile to Ubuntu's upstart scripts"
-  task :export do
-    on roles(:app) do
-      execute "cd #{current_path} && #{sudo} foreman export upstart /etc/init -a #{app_name} "\
-              "-u #{user} -l /var/#{app_name}/log"
-    end
-  end
-
-  desc 'Start the application services'
-  task :start do
-    on roles(:app) do
-      execute "#{sudo} service #{app_name} start"
-    end
-  end
-
-  desc 'Stop the application services'
-  task :stop do
-    on roles(:app) do
-      execute "#{sudo} service #{app_name} stop"
-    end
-  end
-
-  desc 'Restart the application services'
-  task :restart do
-    on roles(:app) do
-      execute "#{sudo} service #{app_name} start || #{sudo} service #{app_name} restart"
     end
   end
 end
