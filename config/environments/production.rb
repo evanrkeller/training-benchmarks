@@ -4,7 +4,6 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   smtp_settings = YAML.load_file(File.join(File.dirname(File.expand_path(__FILE__)), '..', 'smtp.yml'))
 
-
   # Code is not reloaded between requests.
   config.cache_classes = true
 

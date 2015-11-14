@@ -3,7 +3,6 @@ require 'yaml'
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-
   smtp_settings = YAML.load_file(File.join(File.dirname(File.expand_path(__FILE__)), '..', 'smtp.yml'))
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
