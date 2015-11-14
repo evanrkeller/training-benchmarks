@@ -1,0 +1,4 @@
+address: smtp.sendgrid.net
+username: username
+password: password
+domain: example.com
