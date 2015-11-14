@@ -4,4 +4,5 @@ before_install:
   - 'sh -e /etc/init.d/xvfb start'
 before_script:
   - cp config/database.yml.travis config/database.yml
+  - cp config/smtp.yml.example config/smtp.yml
   - psql -c 'create database "training-benchmarks_test";' -U postgres
