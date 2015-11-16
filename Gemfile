@@ -3,8 +3,12 @@ ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
-# Use postgresql as the database for Active Record
-gem 'pg'
+# Use postgresql as the database for Active Record in development and test
+gem 'pg', group: [:development, :test]
+
+# Use MySQL as the database for Active Record in production
+gem 'mysql2', group: :production
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -35,12 +39,18 @@ gem 'rails_12factor', group: :production
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Unicorn as the app server
-gem 'unicorn-rails'
 gem 'rack-timeout'
 
+gem 'puma'
+gem 'foreman'
+
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+group :development do
+  gem 'capistrano-rails', require: false
+  gem 'capistrano3-puma', github: 'seuros/capistrano-puma'
+  gem 'capistrano-rbenv', require: false
+  gem 'capistrano-bundler', require: false
+end
 
 group :test do
   gem 'simplecov', require: false

@@ -13,3 +13,6 @@
 /tmp
 
 /coverage
+/config/deploy/*
+/config/database.yml
+/config/smtp.yml

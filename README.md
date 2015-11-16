@@ -14,6 +14,8 @@
     cd ~/Projects #or where ever you keep your projects
     git clone git@github.com:evanrkeller/training-benchmarks.git
     cd training-benchmarks
+    cp config/database.yml{.example,}
+    cp config/smtp.yml{.example,}
     gem install bundler
     bundle install
 
