@@ -12,6 +12,6 @@ describe 'the registration process', type: :feature do
       fill_in 'Password confirmation', with: 'password'
     end
     click_button 'Sign up'
-    expect(page).to have_content 'Welcome! You have signed up successfully.'
+    expect(page).to have_content I18n.t('devise.registrations.signed_up')
   end
 end
