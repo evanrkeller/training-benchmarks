@@ -5,17 +5,17 @@ RSpec.describe 'bmarks/index', type: :view do
     @example_track = Track.create!(name: 'Example Track')
     @example_stage = Stage.create!(name: 'Example Stage')
     assign(:bmarks, [
-      Bmark.create!(
-        name: 'Name',
-        track: @example_track,
-        stage: @example_stage
-      ),
-      Bmark.create!(
-        name: 'Name',
-        track: @example_track,
-        stage: @example_stage
-      )
-    ])
+             Bmark.create!(
+               name: 'Name',
+               track: @example_track,
+               stage: @example_stage
+             ),
+             Bmark.create!(
+               name: 'Name',
+               track: @example_track,
+               stage: @example_stage
+             )
+           ])
   end
 
   it 'renders a list of bmarks' do

@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe 'practices/index', type: :view do
   before(:each) do
     assign(:practices, [
-      FactoryGirl.create(:practice, start_time: '2015-01-01 15:00', end_time: '2015-01-01 17:00'),
-      FactoryGirl.create(:practice)
-    ])
+             FactoryGirl.create(:practice, start_time: '2015-01-01 15:00', end_time: '2015-01-01 17:00'),
+             FactoryGirl.create(:practice)
+           ])
   end
 
   it 'renders a list of practices' do
