@@ -28,7 +28,7 @@ RSpec.describe 'users/show', type: :view do
 
     it 'display for the selected track' do
       render
-      expect(rendered).to match("#{@example_benchmark.name}")
+      expect(rendered).to match(@example_benchmark.name.to_s)
     end
 
     it 'that have been signed off are indicated' do
@@ -51,7 +51,7 @@ RSpec.describe 'users/show', type: :view do
 
     it 'show practice session the feedback was for' do
       render
-      expect(rendered).to match("#{@practice.date}")
+      expect(rendered).to match(@practice.date.to_s)
     end
   end
 end
