@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :tracks
 
-  resources :locations, only: [:index]
+  resources :locations, only: [:index, :new, :create]
 
   resources :sign_offs, only: [:create]
 

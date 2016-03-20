@@ -1,4 +1,7 @@
 .page-header
+  = link_to new_location_path, :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    = t('new_model', model: Location.model_name.human)
   %h1= Location.model_name.human.pluralize
 
 .table-responsive
