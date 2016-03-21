@@ -9,8 +9,13 @@
     %thead
       %tr
         %th= Location.human_attribute_name(:name)
+        %th.actions
 
     %tbody
       - @locations.each do |location|
-        %tr
+        %tr{data: {location: {id: location.to_param}}}
           %td= location.name
+          %td.action
+            = link_to edit_location_path(location), {title: t('edit')} do
+              %span.glyphicon.glyphicon-pencil{aria: {hidden: 'true'} }
+              %span.sr-only>= t('edit')

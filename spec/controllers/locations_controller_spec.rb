@@ -70,5 +70,46 @@ RSpec.describe LocationsController, type: :controller do
         end
       end
     end
+
+    describe 'PUT update' do
+      describe 'with valid params' do
+        let(:new_attributes) do
+          { name: 'Updated Example Location' }
+        end
+
+        it 'updates the requested location' do
+          location = Location.create! valid_attributes
+          put :update, id: location.to_param, location: new_attributes
+          location.reload
+          expect(location.name).to eq(new_attributes[:name])
+        end
+
+        it 'assigns the requested location as @location' do
+          location = Location.create! valid_attributes
+          put :update, id: location.to_param, location: valid_attributes
+          expect(assigns(:location)).to eq(location)
+        end
+
+        it 'redirects to the locations index' do
+          location = Location.create! valid_attributes
+          put :update, id: location.to_param, location: valid_attributes
+          expect(response).to redirect_to(locations_path)
+        end
+      end
+
+      describe 'with invalid params' do
+        it 'assigns the location as @location' do
+          location = Location.create! valid_attributes
+          put :update, id: location.to_param, location: invalid_attributes
+          expect(assigns(:location)).to eq(location)
+        end
+
+        it "re-renders the 'edit' template" do
+          location = Location.create! valid_attributes
+          put :update, id: location.to_param, location: invalid_attributes
+          expect(response).to render_template('edit')
+        end
+      end
+    end
   end
 end

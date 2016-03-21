@@ -1,4 +1,6 @@
 class LocationsController < ApplicationController
+  before_action :set_location, only: [:edit, :update]
+
   respond_to :html
 
   def index
@@ -20,7 +22,23 @@ class LocationsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @location.update(location_params)
+    if @location.save
+      redirect_to locations_path
+    else
+      respond_with(@location)
+    end
+  end
+
   private
+
+  def set_location
+    @location = Location.find(params[:id])
+  end
 
   def location_params
     params.require(:location).permit(:name)
