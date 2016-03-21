@@ -27,4 +27,9 @@ RSpec.describe 'layouts/application' do
     render
     expect(rendered).to match('http://gravatar.com/avatar/55502f40dc8b7c769880b10874abc9d0.jpg')
   end
+
+  it 'has a Locations nav item' do
+    render
+    expect(rendered).to match('Locations')
+  end
 end

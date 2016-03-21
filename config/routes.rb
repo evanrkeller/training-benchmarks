@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :tracks
 
+  resources :locations, except: [:show]
+
   resources :sign_offs, only: [:create]
 
   devise_for :users, skip: [:registrations]
