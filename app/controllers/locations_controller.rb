@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-  before_action :set_location, only: [:edit, :update]
+  before_action :set_location, only: [:edit, :update, :destroy]
 
   respond_to :html
 
@@ -32,6 +32,11 @@ class LocationsController < ApplicationController
     else
       respond_with(@location)
     end
+  end
+
+  def destroy
+    @location.destroy
+    respond_with(@location)
   end
 
   private

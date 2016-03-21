@@ -19,3 +19,6 @@
             = link_to edit_location_path(location), {title: t('edit')} do
               %span.glyphicon.glyphicon-pencil{aria: {hidden: 'true'} }
               %span.sr-only>= t('edit')
+            = link_to location, {data: { confirm: t('are_you_sure') }, title: t('destroy'), method: :delete} do
+              %span.glyphicon.glyphicon-trash{aria: {hidden: 'true'} }
+              %span.sr-only>= t('destroy')
