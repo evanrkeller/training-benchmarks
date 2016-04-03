@@ -1,8 +1,8 @@
-= form_for @track, :html => { :class => "form-horizontal", :role => "form" } do |f|
+= form_for @track, html: { class: "form-horizontal", role: "form" } do |f|
   -if @track.errors.any?
-    .alert.alert-danger.alert-dismissable{:role => "alert"}
-      %button.close{:type => "button", :data => {:dismiss => "alert"} }
-        %span{:aria => {:hidden => "true"} } &times;
+    .alert.alert-danger.alert-dismissable{role: "alert"}
+      %button.close{type: "button", data: {dismiss: "alert"} }
+        %span{aria: {hidden: "true"} } &times;
         %span.sr-only= t('close')
       %h4= "#{pluralize(@track.errors.count, "error")} prohibited this track from being saved:"
 
@@ -11,19 +11,19 @@
           %li= msg
 
   .form-group
-    = f.label :name, :class => 'col-sm-2 control-label'
+    = f.label :name, class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.text_field :name, :class => 'form-control'
+      = f.text_field :name, class: 'form-control'
   - if @locations_size == 1
     .form-group
-      = f.label :location, :class => 'col-sm-2 control-label'
+      = f.label :location, class: 'col-sm-2 control-label'
       .col-sm-10
         %input#track_location.form-control{ name: 'track[location]', value: f.object.location.name, readonly: 'readonly' }
   - elsif @locations_size > 1
     .form-group
-      = f.label :location, :class => 'col-sm-2 control-label'
+      = f.label :location, class: 'col-sm-2 control-label'
       .col-sm-10
         = f.collection_select(:location_id, Location.all, :id, :name, {prompt: true}, {class: 'form-control'})
   .form-group
     .col-sm-offset-2.col-sm-10
-      = f.submit :class => 'btn btn-primary'
+      = f.submit class: 'btn btn-primary'

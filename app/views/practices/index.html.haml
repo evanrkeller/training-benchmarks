@@ -1,5 +1,5 @@
 .page-header
-  = link_to new_practice_path, :class => 'btn btn-primary' do
+  = link_to new_practice_path, class: 'btn btn-primary' do
     %span.glyphicon.glyphicon-plus
     = t('new_model', model: Practice.model_name.human)
   %h1= Practice.model_name.human.pluralize
