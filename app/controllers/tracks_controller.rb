@@ -1,5 +1,6 @@
 class TracksController < ApplicationController
   before_action :set_track, only: [:show, :edit, :update, :destroy]
+  before_action :set_locations_size, only: [:new, :edit, :create, :update]
 
   respond_to :html
 
@@ -14,19 +15,23 @@ class TracksController < ApplicationController
 
   def new
     @track = Track.new
+    @track.location = Location.first if @locations_size == 1
     respond_with(@track)
   end
 
   def edit
+    @track.location = Location.first if @locations_size == 1
   end
 
   def create
     @track = Track.new(track_params)
+    @track.location = Location.first if @locations_size == 1
     @track.save
     respond_with(@track)
   end
 
   def update
+    @track.location = Location.first if @locations_size == 1
     @track.update(track_params)
     respond_with(@track)
   end
@@ -42,7 +47,11 @@ class TracksController < ApplicationController
     @track = Track.find(params[:id])
   end
 
+  def set_locations_size
+    @locations_size = Location.all.size
+  end
+
   def track_params
-    params.require(:track).permit(:name)
+    params.require(:track).permit(:name, :location_id)
   end
 end

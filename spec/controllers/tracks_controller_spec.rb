@@ -47,13 +47,25 @@ RSpec.describe TracksController, type: :controller do
         get :new
         expect(assigns(:track)).to be_a_new(Track)
       end
+
+      it 'assigns `Location.all.size` as @locations_size' do
+        get :new
+        expect(assigns(:locations_size)).to eq(0)
+      end
     end
 
     describe 'GET edit' do
+      before do
+        @track = Track.create! valid_attributes
+        get :edit, id: @track.to_param
+      end
+
       it 'assigns the requested track as @track' do
-        track = Track.create! valid_attributes
-        get :edit, id: track.to_param
-        expect(assigns(:track)).to eq(track)
+        expect(assigns(:track)).to eq(@track)
+      end
+
+      it 'assigns `Location.all.size` as @locations_size' do
+        expect(assigns(:locations_size)).to eq(0)
       end
     end
 
@@ -69,6 +81,11 @@ RSpec.describe TracksController, type: :controller do
           post :create, track: valid_attributes
           expect(assigns(:track)).to be_a(Track)
           expect(assigns(:track)).to be_persisted
+        end
+
+        it 'assigns `Location.all.size` as @locations_size' do
+          post :create, track: valid_attributes
+          expect(assigns(:locations_size)).to eq(0)
         end
 
         it 'redirects to the created track' do
@@ -109,6 +126,11 @@ RSpec.describe TracksController, type: :controller do
           expect(assigns(:track)).to eq(track)
         end
 
+        it 'assigns `Location.all.size` as @locations_size' do
+          track = Track.create! valid_attributes
+          post :update, id: track.to_param, track: valid_attributes
+          expect(assigns(:locations_size)).to eq(0)
+        end
         it 'redirects to the track' do
           track = Track.create! valid_attributes
           put :update, id: track.to_param, track: valid_attributes
