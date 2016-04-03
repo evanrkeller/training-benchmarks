@@ -18,8 +18,7 @@
         %tr
           %td= bmark.name
           %td
-            = bmark.track.name
-            = "(#{bmark.track.location.name})" if bmark.track.location
+            = bmark.track.name_and_location
           %td= bmark.stage.name
           %td.action
             = link_to bmark, {title: t('show')} do

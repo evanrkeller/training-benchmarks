@@ -15,4 +15,22 @@ RSpec.describe Track, type: :model do
     before { allow(Location).to receive(:exists?).and_return(true) }
     it { should validate_presence_of(:location) }
   end
+
+  describe '#name_and_location' do
+    before do
+      @track = FactoryGirl.create(:track)
+    end
+    describe 'with a location' do
+      it 'should return the name and location' do
+        @track.location = FactoryGirl.create(:location)
+        expect(@track.name_and_location).to eq "#{@track.name} (#{@track.location.name})"
+      end
+    end
+
+    describe 'without a location' do
+      it 'should only return the name' do
+        expect(@track.name_and_location).to eq @track.name
+      end
+    end
+  end
 end

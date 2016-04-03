@@ -28,8 +28,7 @@ RSpec.describe 'bmarks/index', type: :view do
 
   it 'includes the name of a location with the track' do
     render
-    expect(rendered).to have_selector('tr>td',
-                                      text: "#{@example_track_two.name}\n(#{@example_track_two.location.name})")
+    expect(rendered).to have_selector('tr>td', text: @example_track_two.name_and_location)
   end
 
   it 'does not show anything for tracks without a location' do

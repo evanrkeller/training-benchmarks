@@ -19,4 +19,16 @@ RSpec.describe 'bmarks/show', type: :view do
     expect(rendered).to match(/Example Track/)
     expect(rendered).to match(/Example Stage/)
   end
+
+  it 'includes the location name if associated with the track' do
+    @example_track.location = Location.create!(name: 'Example Location')
+    @bmark = assign(:bmark, Bmark.create!(
+                              name: 'Name',
+                              description: 'MyText',
+                              track: @example_track,
+                              stage: @example_stage
+    ))
+    render
+    expect(rendered).to match(/Example Track \(Example Location\)/)
+  end
 end

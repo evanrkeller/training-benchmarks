@@ -5,6 +5,14 @@ class Track < ActiveRecord::Base
   validates :name, presence: true
   validates :location, presence: true, if: :locations_exist
 
+  def name_and_location
+    if location
+      "#{name} (#{location.name})"
+    else
+      name
+    end
+  end
+
   private
 
   def locations_exist
