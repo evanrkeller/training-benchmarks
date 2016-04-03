@@ -22,6 +22,7 @@ en:
   edit_model: Edit %{model}
   feedback: Feedback
   new_model: New %{model}
+  no_location_assigned: No location assigned
   practice_time: Practice Time
   remove: Remove
   schedule: Schedule
