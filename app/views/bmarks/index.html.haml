@@ -17,7 +17,9 @@
       - @bmarks.each do |bmark|
         %tr
           %td= bmark.name
-          %td= bmark.track.name
+          %td
+            = bmark.track.name
+            = "(#{bmark.track.location.name})" if bmark.track.location
           %td= bmark.stage.name
           %td.action
             = link_to bmark, {title: t('show')} do
