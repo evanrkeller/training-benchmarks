@@ -35,10 +35,17 @@ RSpec.describe TracksController, type: :controller do
     end
 
     describe 'GET show' do
+      before do
+        @track = Track.create! valid_attributes
+        get :show, id: @track.to_param
+      end
+
       it 'assigns the requested track as @track' do
-        track = Track.create! valid_attributes
-        get :show, id: track.to_param
-        expect(assigns(:track)).to eq(track)
+        expect(assigns(:track)).to eq(@track)
+      end
+
+      it 'assigns `Location.all.size` as @locations_size' do
+        expect(assigns(:locations_size)).to eq(0)
       end
     end
 

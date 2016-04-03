@@ -10,3 +10,7 @@
 %dl.dl-horizontal
   %dt= Track.human_attribute_name(:name) + ':'
   %dd= @track.name
+- if @locations_size > 0
+  %dl.dl-horizontal
+    %dt= Track.human_attribute_name(:location) + ':'
+    %dd= @track.location.try(:name) || t('no_location_assigned')

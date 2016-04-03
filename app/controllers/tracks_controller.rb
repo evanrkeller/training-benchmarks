@@ -1,6 +1,6 @@
 class TracksController < ApplicationController
   before_action :set_track, only: [:show, :edit, :update, :destroy]
-  before_action :set_locations_size, only: [:new, :edit, :create, :update]
+  before_action :set_locations_size, only: [:new, :edit, :create, :update, :show]
 
   respond_to :html
 
