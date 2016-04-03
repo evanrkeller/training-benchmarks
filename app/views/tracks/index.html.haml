@@ -9,12 +9,14 @@
     %thead
       %tr
         %th= Track.human_attribute_name(:name)
+        %th= Track.human_attribute_name(:location)
         %th.actions
 
     %tbody
       - @tracks.each do |track|
         %tr
           %td= track.name
+          %td= track.location.try(:name) || t('no_location_assigned')
           %td.actions
             = link_to track, {title: t('show')} do
               %span.glyphicon.glyphicon-info-sign{aria: {hidden: 'true'} }
