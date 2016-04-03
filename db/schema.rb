@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307033249) do
+ActiveRecord::Schema.define(version: 20160402164506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,9 +86,12 @@ ActiveRecord::Schema.define(version: 20160307033249) do
 
   create_table "tracks", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "location_id"
   end
+
+  add_index "tracks", ["location_id"], name: "index_tracks_on_location_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -121,5 +124,6 @@ ActiveRecord::Schema.define(version: 20160307033249) do
   add_foreign_key "feedbacks", "users"
   add_foreign_key "sign_offs", "bmarks"
   add_foreign_key "sign_offs", "users"
+  add_foreign_key "tracks", "locations"
   add_foreign_key "users", "tracks"
 end
