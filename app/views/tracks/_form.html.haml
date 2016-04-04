@@ -18,7 +18,7 @@
     .form-group
       = f.label :location, class: 'col-sm-2 control-label'
       .col-sm-10
-        %input#track_location.form-control{ name: 'track[location]', value: f.object.location.name, readonly: 'readonly' }
+        %input.form-control#track_location{ name: 'track[location]', value: f.object.location.name, readonly: 'readonly' }
   - elsif @locations_size > 1
     .form-group
       = f.label :location, class: 'col-sm-2 control-label'
