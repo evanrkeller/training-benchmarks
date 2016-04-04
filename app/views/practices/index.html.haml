@@ -14,7 +14,7 @@
     %tbody
       - @practices.each do |practice|
         %tr
-          %td= practice.time #i18n-tasks-use t('date_range.with_time.hour') i18n-tasks-use t('date_range.with_time.same_days')
+          %td= practice.time # i18n-tasks-use t('date_range.with_time.hour') i18n-tasks-use t('date_range.with_time.same_days')
           %td.action
             = link_to practice, title: t('show') do
               %span.glyphicon.glyphicon-info-sign{ aria: { hidden: 'true' } }
