@@ -1,5 +1,5 @@
 .page-header
-  = link_to new_practice_path, :class => 'btn btn-primary' do
+  = link_to new_practice_path, class: 'btn btn-primary' do
     %span.glyphicon.glyphicon-plus
     = t('new_model', model: Practice.model_name.human)
   %h1= Practice.model_name.human.pluralize
@@ -14,14 +14,15 @@
     %tbody
       - @practices.each do |practice|
         %tr
-          %td= practice.time #i18n-tasks-use t('date_range.with_time.hour') i18n-tasks-use t('date_range.with_time.same_days')
+          %td= practice.time
+          -# i18n-tasks-use t('date_range.with_time.hour') i18n-tasks-use t('date_range.with_time.same_days')
           %td.action
-            = link_to practice, {title: t('show')} do
-              %span.glyphicon.glyphicon-info-sign{aria: {hidden: 'true'} }
+            = link_to practice, title: t('show') do
+              %span.glyphicon.glyphicon-info-sign{ aria: { hidden: 'true' } }
               %span.sr-only>= t('show')
-            = link_to edit_practice_path(practice), {title: t('edit')} do
-              %span.glyphicon.glyphicon-pencil{aria: {hidden: 'true'} }
+            = link_to edit_practice_path(practice), title: t('edit') do
+              %span.glyphicon.glyphicon-pencil{ aria: { hidden: 'true' } }
               %span.sr-only>= t('edit')
-            = link_to practice, {data: { confirm: t('are_you_sure') }, title: t('destroy'), method: :delete} do
-              %span.glyphicon.glyphicon-trash{aria: {hidden: 'true'} }
+            = link_to practice, data: { confirm: t('are_you_sure') }, title: t('destroy'), method: :delete do
+              %span.glyphicon.glyphicon-trash{ aria: { hidden: 'true' } }
               %span.sr-only>= t('destroy')

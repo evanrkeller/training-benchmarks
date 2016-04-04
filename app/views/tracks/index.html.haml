@@ -1,5 +1,5 @@
 .page-header
-  = link_to new_track_path, :class => 'btn btn-primary' do
+  = link_to new_track_path, class: 'btn btn-primary' do
     %span.glyphicon.glyphicon-plus
     = t('new_model', model: Track.model_name.human)
   %h1= Track.model_name.human.pluralize
@@ -18,12 +18,12 @@
           %td= track.name
           %td= track.location.try(:name) || t('no_location_assigned')
           %td.actions
-            = link_to track, {title: t('show')} do
-              %span.glyphicon.glyphicon-info-sign{aria: {hidden: 'true'} }
+            = link_to track, title: t('show') do
+              %span.glyphicon.glyphicon-info-sign{ aria: { hidden: 'true' } }
               %span.sr-only>= t('show')
-            = link_to edit_track_path(track), {title: t('edit')} do
-              %span.glyphicon.glyphicon-pencil{aria: {hidden: 'true'} }
+            = link_to edit_track_path(track), title: t('edit') do
+              %span.glyphicon.glyphicon-pencil{ aria: { hidden: 'true' } }
               %span.sr-only>= t('edit')
-            = link_to track, {data: { confirm: t('are_you_sure') }, title: t('destroy'), method: :delete} do
-              %span.glyphicon.glyphicon-trash{aria: {hidden: 'true'} }
+            = link_to track, data: { confirm: t('are_you_sure') }, title: t('destroy'), method: :delete do
+              %span.glyphicon.glyphicon-trash{ aria: { hidden: 'true' } }
               %span.sr-only>= t('destroy')
