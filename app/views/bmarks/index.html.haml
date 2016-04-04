@@ -21,12 +21,12 @@
             = bmark.track.name_and_location
           %td= bmark.stage.name
           %td.action
-            = link_to bmark, {title: t('show')} do
-              %span.glyphicon.glyphicon-info-sign{aria: {hidden: 'true'} }
+            = link_to bmark, { title: t('show') } do
+              %span.glyphicon.glyphicon-info-sign{ aria: { hidden: 'true' } }
               %span.sr-only>= t('show')
-            = link_to edit_bmark_path(bmark), {title: t('edit')} do
-              %span.glyphicon.glyphicon-pencil{aria: {hidden: 'true'} }
+            = link_to edit_bmark_path(bmark), { title: t('edit') } do
+              %span.glyphicon.glyphicon-pencil{ aria: { hidden: 'true' } }
               %span.sr-only>= t('edit')
-            = link_to bmark, {data: { confirm: t('are_you_sure') }, title: t('destroy'), method: :delete} do
-              %span.glyphicon.glyphicon-trash{aria: {hidden: 'true'} }
+            = link_to bmark, { data: { confirm: t('are_you_sure') }, title: t('destroy'), method: :delete } do
+              %span.glyphicon.glyphicon-trash{ aria: { hidden: 'true' } }
               %span.sr-only>= t('destroy')

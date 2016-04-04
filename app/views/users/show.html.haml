@@ -30,7 +30,7 @@
         %td= benchmark.name
         %td.actions
           -if @user.completed_benchmarks.include?(benchmark)
-            %span.glyphicon.glyphicon-ok.completed{aria: {hidden: 'true'} }
+            %span.glyphicon.glyphicon-ok.completed{ aria: { hidden: 'true' } }
             %span.sr-only>= t('completed')
           -else
             = form_for SignOff.new(bmark: benchmark, user: @user) do |f|
