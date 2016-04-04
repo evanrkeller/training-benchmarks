@@ -4,7 +4,7 @@
       %button.close{ type: 'button', data: { dismiss: 'alert' } }
         %span{ aria: { hidden: 'true' } } &times;
         %span.sr-onlyy= t('close')
-      %h4= "#{pluralize(@practice.errors.count, 'error')} prohibited this practice from being saved:"
+      %h4 #{pluralize(@practice.errors.count, 'error')} prohibited this practice from being saved:
 
       %ul
         - @practice.errors.full_messages.each do |msg|

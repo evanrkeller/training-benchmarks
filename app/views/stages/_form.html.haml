@@ -4,7 +4,7 @@
       %button.close{ type: 'button', data: { dismiss: 'alert' } }
         %span{ aria: { hidden: 'true' } } &times;
         %span.sr-only= t('close')
-      %h4= "#{pluralize(@stage.errors.count, 'error')} prohibited this stage from being saved:"
+      %h4 #{pluralize(@stage.errors.count, 'error')} prohibited this stage from being saved:
 
       %ul
         - @stage.errors.full_messages.each do |msg|
