@@ -23,7 +23,7 @@
     .form-group
       = f.label :location, class: 'col-sm-2 control-label'
       .col-sm-10
-        = f.collection_select(:location_id, Location.all, :id, :name, { prompt: true }, { class: 'form-control' })
+        = f.collection_select(:location_id, Location.all, :id, :name, { prompt: true }, class: 'form-control')
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit class: 'btn btn-primary'

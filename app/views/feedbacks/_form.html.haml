@@ -13,7 +13,7 @@
   .form-group
     = f.label :practice, class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.collection_select(:practice_id, @user.practices, :id, :date, {}, { class: 'form-control' })
+      = f.collection_select(:practice_id, @user.practices, :id, :date, {}, class: 'form-control')
   .form-group
     = f.label :note, class: 'col-sm-2 control-label'
     .col-sm-10
