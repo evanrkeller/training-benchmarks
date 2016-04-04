@@ -1,10 +1,10 @@
-= form_for @bmark, html: { class: "form-horizontal", role: "form" } do |f|
+= form_for @bmark, html: { class: 'form-horizontal', role: 'form' } do |f|
   -if @bmark.errors.any?
-    .alert.alert-danger.alert-dismissable{ role: "alert" }
-      %button.close{ type: "button", data: { dismiss: "alert" } }
-        %span{ aria: { hidden: "true" } } &times;
+    .alert.alert-danger.alert-dismissable{ role: 'alert' }
+      %button.close{ type: 'button', data: { dismiss: 'alert' } }
+        %span{ aria: { hidden: 'true' } } &times;
         %span.sr-only= t('close')
-      %h4= "#{ pluralize(@bmark.errors.count, "error") } prohibited this bmark from being saved:"
+      %h4= "#{ pluralize(@bmark.errors.count, 'error') } prohibited this bmark from being saved:"
 
       %ul
         - @bmark.errors.full_messages.each do |msg|

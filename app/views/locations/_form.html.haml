@@ -1,10 +1,10 @@
-= form_for @location, html: { class: "form-horizontal", role: "form" } do |f|
+= form_for @location, html: { class: 'form-horizontal', role: 'form' } do |f|
   -if @location.errors.any?
-    .alert.alert-danger.alert-dismissable{ role: "alert" }
-      %button.close{ type: "button", data: { dismiss: "alert" } }
-        %span{ aria: { hidden: "true" } } &times;
+    .alert.alert-danger.alert-dismissable{ role: 'alert' }
+      %button.close{ type: 'button', data: { dismiss: 'alert' } }
+        %span{ aria: { hidden: 'true' } } &times;
         %span.sr-only= t('close')
-      %h4= "#{ pluralize(@location.errors.count, "error") } prohibited this location from being saved:"
+      %h4= "#{ pluralize(@location.errors.count, 'error') } prohibited this location from being saved:"
 
       %ul
         - @location.errors.full_messages.each do |msg|
