@@ -1,10 +1,10 @@
 .page-header
   = link_to stages_path, class: 'btn btn-default' do
     %span.glyphicon.glyphicon-list-alt
-    =t('back')
+    = t('back')
   = link_to edit_stage_path(@stage), class: 'btn btn-primary' do
     %span.glyphicon.glyphicon-pencil
-    =t('edit')
+    = t('edit')
   %h1= t('show_model', model: Stage.model_name.human)
 
 %dl.dl-horizontal

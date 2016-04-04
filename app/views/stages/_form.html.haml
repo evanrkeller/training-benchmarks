@@ -1,5 +1,5 @@
 = form_for @stage, html: { class: 'form-horizontal', role: 'form' } do |f|
-  -if @stage.errors.any?
+  - if @stage.errors.any?
     .alert.alert-danger.alert-dismissable{ role: 'alert' }
       %button.close{ type: 'button', data: { dismiss: 'alert' } }
         %span{ aria: { hidden: 'true' } } &times;

@@ -1,5 +1,5 @@
 = form_for @track, html: { class: 'form-horizontal', role: 'form' } do |f|
-  -if @track.errors.any?
+  - if @track.errors.any?
     .alert.alert-danger.alert-dismissable{ role: 'alert' }
       %button.close{ type: 'button', data: { dismiss: 'alert' } }
         %span{ aria: { hidden: 'true' } } &times;

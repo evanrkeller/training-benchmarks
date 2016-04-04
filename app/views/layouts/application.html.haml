@@ -29,17 +29,17 @@
         #navbar.collapse.navbar-collapse
           %ul.nav.navbar-nav
             %li{ class: current_page?(controller: '/users') ? 'active' : nil }
-              =link_to User.model_name.human.pluralize, users_path
+              = link_to User.model_name.human.pluralize, users_path
             %li{ class: current_page?(controller: '/tracks') ? 'active' : nil }
-              =link_to Track.model_name.human.pluralize, tracks_path
+              = link_to Track.model_name.human.pluralize, tracks_path
             %li{ class: current_page?(controller: '/stages') ? 'active' : nil }
-              =link_to Stage.model_name.human.pluralize, stages_path
+              = link_to Stage.model_name.human.pluralize, stages_path
             %li{ class: current_page?(controller: '/bmarks') ? 'active' : nil }
-              =link_to Bmark.model_name.human.pluralize, bmarks_path
+              = link_to Bmark.model_name.human.pluralize, bmarks_path
             %li{ class: current_page?(controller: '/practices') ? 'active' : nil }
-              =link_to Practice.model_name.human.pluralize, practices_path
+              = link_to Practice.model_name.human.pluralize, practices_path
             %li{ class: current_page?(controller: '/locations') ? 'active' : nil }
-              =link_to Location.model_name.human.pluralize, locations_path
+              = link_to Location.model_name.human.pluralize, locations_path
           - if user_signed_in?
             %ul.nav.navbar-nav.navbar-right
               %li.divider-vertical

@@ -1,10 +1,10 @@
 .page-header
   = link_to users_path, class: 'btn btn-default' do
     %span.glyphicon.glyphicon-list-alt
-    =t('back')
+    = t('back')
   = link_to edit_user_path(@user), class: 'btn btn-primary' do
     %span.glyphicon.glyphicon-pencil
-    =t('edit')
+    = t('edit')
   %h1= t('show_model', model: User.model_name.human)
 
 %dl.dl-horizontal
@@ -29,10 +29,10 @@
       %tr
         %td= benchmark.name
         %td.actions
-          -if @user.completed_benchmarks.include?(benchmark)
+          - if @user.completed_benchmarks.include?(benchmark)
             %span.glyphicon.glyphicon-ok.completed{ aria: { hidden: 'true' } }
             %span.sr-only>= t('completed')
-          -else
+          - else
             = form_for SignOff.new(bmark: benchmark, user: @user) do |f|
               = f.hidden_field :bmark_id
               = f.hidden_field :user_id
