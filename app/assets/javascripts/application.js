@@ -13,4 +13,18 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .
+
+$(function() {
+    $('.datetimepicker').datetimepicker({
+        sideBySide: true
+    });
+
+    $("#practice_start_time").on("dp.change", function (e) {
+        $('#practice_end_time').data("DateTimePicker").minDate(e.date);
+        start_time = e.date;
+        $('#practice_end_time').data("DateTimePicker").date(start_time.add(1.5, 'hours'));
+    });
+})

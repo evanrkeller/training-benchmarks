@@ -29,6 +29,9 @@ gem 'haml-rails'
 gem 'bootstrap-generators', '~> 3.3.1'
 gem 'date_range_formatter'
 
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
+
 gem 'devise'
 gem 'acts_as_list'
 
