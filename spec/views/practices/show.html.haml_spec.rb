@@ -9,6 +9,11 @@ RSpec.describe 'practices/show', type: :view do
     render
   end
 
+  it 'shows the stage' do
+    render
+    expect(rendered).to have_selector('dt', text: Practice.human_attribute_name(:stage) + ':')
+  end
+
   describe 'users sections' do
     before do
       @users = [

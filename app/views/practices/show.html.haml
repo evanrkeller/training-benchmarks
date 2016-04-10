@@ -12,6 +12,8 @@
   %dd= @practice.start_time
   %dt= Practice.human_attribute_name(:end_time) + ':'
   %dd= @practice.end_time
+  %dt= Practice.human_attribute_name(:stage) + ':'
+  %dd= @practice.stage.try(:name)
 
 %ul.unscheduled
   - @practice.unregistered_users.each do |user|
