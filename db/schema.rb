@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160402164506) do
+ActiveRecord::Schema.define(version: 20160410160604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,10 @@ ActiveRecord::Schema.define(version: 20160402164506) do
     t.datetime "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "stage_id"
   end
+
+  add_index "practices", ["stage_id"], name: "index_practices_on_stage_id", using: :btree
 
   create_table "practices_users", force: :cascade do |t|
     t.integer "practice_id"
@@ -122,6 +125,7 @@ ActiveRecord::Schema.define(version: 20160402164506) do
   add_foreign_key "bmarks", "tracks"
   add_foreign_key "feedbacks", "practices"
   add_foreign_key "feedbacks", "users"
+  add_foreign_key "practices", "stages"
   add_foreign_key "sign_offs", "bmarks"
   add_foreign_key "sign_offs", "users"
   add_foreign_key "tracks", "locations"

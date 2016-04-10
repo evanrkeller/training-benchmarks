@@ -19,7 +19,8 @@ RSpec.describe PracticesController, type: :controller do
     # Practice. As you add validations to Practice, be sure to
     # adjust the attributes here as well.
     let(:valid_attributes) do
-      { start_time: Time.zone.local(2015, 1, 15, 19, 0, 0), end_time: Time.zone.local(2015, 1, 15, 21, 0, 0) }
+      { start_time: Time.zone.local(2015, 1, 15, 19, 0, 0), end_time: Time.zone.local(2015, 1, 15, 21, 0, 0),
+        stage_id: FactoryGirl.create(:stage).id }
     end
 
     let(:invalid_attributes) do
