@@ -1,5 +1,6 @@
 class Practice < ActiveRecord::Base
   belongs_to :stage
+  belongs_to :location
   has_and_belongs_to_many :users
   has_many :feedbacks, dependent: :destroy
   validates :stage, :start_time, :end_time, presence: true
