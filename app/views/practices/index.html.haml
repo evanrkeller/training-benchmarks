@@ -9,6 +9,7 @@
     %thead
       %tr
         %th= t(:practice_time)
+        %th= Practice.human_attribute_name(:stage)
         %th.actions
 
     %tbody
@@ -16,6 +17,7 @@
         %tr
           %td= practice.time
           -# i18n-tasks-use t('date_range.with_time.hour') i18n-tasks-use t('date_range.with_time.same_days')
+          %td= practice.stage.try(:name)
           %td.action
             = link_to practice, title: t('show') do
               %span.glyphicon.glyphicon-info-sign{ aria: { hidden: 'true' } }
