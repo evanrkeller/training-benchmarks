@@ -17,7 +17,7 @@
       - @users.each do |user|
         %tr
           %td= user.full_name
-          %td= user.track ? user.track.name : 'Undeclared'
+          %td= user.track ? user.track.name : t('undeclared')
           %td= user.track.try(:location).try(:name)
           %td.actions
             = link_to user, title: t('show') do

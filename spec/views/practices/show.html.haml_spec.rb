@@ -56,7 +56,7 @@ RSpec.describe 'practices/show', type: :view do
       render
       expect(rendered).to have_selector 'th', text: 'Track'
       expect(rendered).to have_selector 'td', text: @track.name
-      expect(rendered).to have_selector 'td', text: 'Undeclared'
+      expect(rendered).to have_selector 'td', text: t('undeclared')
     end
 
     it 'has a remove button for registered users' do
