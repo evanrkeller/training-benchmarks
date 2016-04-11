@@ -32,4 +32,19 @@ describe 'Practice management', type: :feature do
       expect(page).to have_text 'March 10, 2015,  7:00 pm- 8:00 pm'
     end
   end
+
+  describe 'new practice' do
+    it 'shows a date/time selector for start date/time', js: true do
+      visit new_practice_path
+      page.evaluate_script "$('#practice_start_time').data('DateTimePicker').show();"
+      expect(page).to have_selector '.bootstrap-datetimepicker-widget'
+    end
+
+    it 'sets the end time for 90 minutes after the start time', js: true do
+      visit new_practice_path
+      page.evaluate_script "$('#practice_start_time').val('2015-03-10 6:30 PM').trigger('change');"
+      page.evaluate_script "$('#practice_start_time').trigger('change');"
+      expect(page).to have_field('End time', with: '2015-03-10 08:00 PM')
+    end
+  end
 end
