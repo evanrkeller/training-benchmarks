@@ -17,13 +17,13 @@
   %dt= Practice.human_attribute_name(:location) + ':'
   %dd= @practice.location.try(:name)
 
-%ul.unscheduled
-  - @practice.unregistered_users.each do |user|
-    %li
-      = user.full_name
-      = link_to t('schedule'), add_user_practice_path(@practice, user_id: user.id), method: :put
-
 %h2= t(:scheduled_trainees)
+
+.form-group
+  = form_tag add_user_practice_path(@practice), method: :put, id: 'add_user_practice' do |f|
+    = collection_select(f, :user_id, @practice.unregistered_users, :id, :full_name_with_track,
+      { prompt: t('select_trainee') }, class: 'form-control')
+
 %table.table.table-striped.table-bordered.table-hover
   %thead
     %th= User.human_attribute_name(:full_name)

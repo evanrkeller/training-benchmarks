@@ -18,4 +18,12 @@ class User < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def full_name_with_track
+    if track
+      "#{full_name} (#{track.name})"
+    else
+      full_name
+    end
+  end
 end

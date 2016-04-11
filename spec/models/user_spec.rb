@@ -25,4 +25,21 @@ RSpec.describe User, type: :model do
       expect(user.full_name).to eq "#{user.first_name} #{user.last_name}"
     end
   end
+
+  describe '#full_name_with_track' do
+    describe 'with a track' do
+      it 'should return the full name and track' do
+        track = FactoryGirl.create(:track)
+        user = FactoryGirl.create(:user, track: track)
+        expect(user.full_name_with_track).to eq "#{user.full_name} (#{track.name})"
+      end
+    end
+
+    describe 'without a track' do
+      it 'should return the full name and track' do
+        user = FactoryGirl.create(:user, track: nil)
+        expect(user.full_name_with_track).to eq user.full_name
+      end
+    end
+  end
 end

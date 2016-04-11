@@ -25,8 +25,8 @@ en:
   no_location_assigned: No location assigned
   practice_time: Practice Time
   remove: Remove
-  schedule: Schedule
   scheduled_trainees: Scheduled Trainees
+  select_trainee: Select Trainee to Schedule
   show: Show
   show_model: Show %{model}
   sign_off: Sign Off

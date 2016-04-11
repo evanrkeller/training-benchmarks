@@ -33,15 +33,15 @@ RSpec.describe 'practices/show', type: :view do
 
     it 'shows a list of unregistered users to be scheduled' do
       render
-      assert_select 'ul.unscheduled>li', text: /#{@users[0].full_name}/, count: 1
-      assert_select 'ul.unscheduled>li', text: /#{@users[1].full_name}/, count: 0
-      assert_select 'ul.unscheduled>li', text: /#{@users[2].full_name}/, count: 1
-      assert_select 'ul.unscheduled>li', text: /#{@users[3].full_name}/, count: 0
+      expect(rendered).to have_selector 'option', text: @users[0].full_name_with_track
+      expect(rendered).not_to have_selector 'option', text: @users[1].full_name_with_track
+      expect(rendered).to have_selector 'option', text: @users[2].full_name_with_track
+      expect(rendered).not_to have_selector 'option', text: @users[3].full_name_with_track
     end
 
-    it 'has a schedule button for unregistered users' do
+    it 'has a form for adding unregistered users' do
       render
-      assert_select 'a[href=?]', add_user_practice_path(@practice, user_id: @users[0].id)
+      assert_select 'form[action=?]', add_user_practice_path(@practice)
     end
 
     it 'shows a list of registered users that have been scheduled' do
