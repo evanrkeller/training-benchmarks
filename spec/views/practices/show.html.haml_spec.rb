@@ -14,6 +14,12 @@ RSpec.describe 'practices/show', type: :view do
     expect(rendered).to have_selector('dt', text: Practice.human_attribute_name(:stage) + ':')
   end
 
+  it 'shows the location' do
+    render
+    expect(rendered).to have_selector('dt', text: Practice.human_attribute_name(:location) + ':')
+    expect(rendered).to have_selector('dd', text: @practice.location.name)
+  end
+
   describe 'users sections' do
     before do
       @users = [
