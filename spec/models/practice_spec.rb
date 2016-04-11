@@ -4,6 +4,7 @@ RSpec.describe Practice, type: :model do
   it { should validate_presence_of :start_time }
   it { should validate_presence_of :end_time }
   it { should validate_presence_of :stage }
+  it { should validate_presence_of :location }
   it { should have_and_belong_to_many :users }
   it { should have_many(:feedbacks).dependent(:destroy) }
   it { should belong_to :stage }

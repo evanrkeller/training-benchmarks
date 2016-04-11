@@ -20,7 +20,7 @@ RSpec.describe PracticesController, type: :controller do
     # adjust the attributes here as well.
     let(:valid_attributes) do
       { start_time: Time.zone.local(2015, 1, 15, 19, 0, 0), end_time: Time.zone.local(2015, 1, 15, 21, 0, 0),
-        stage_id: FactoryGirl.create(:stage).id }
+        stage_id: FactoryGirl.create(:stage).id, location_id: FactoryGirl.create(:location).id }
     end
 
     let(:invalid_attributes) do

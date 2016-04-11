@@ -53,6 +53,6 @@ class PracticesController < ApplicationController
   end
 
   def practice_params
-    params.require(:practice).permit(:start_time, :end_time, :stage_id)
+    params.require(:practice).permit(:start_time, :end_time, :stage_id, :location_id)
   end
 end

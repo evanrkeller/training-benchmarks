@@ -18,7 +18,7 @@ RSpec.describe Track, type: :model do
 
   describe '#name_and_location' do
     before do
-      @track = FactoryGirl.create(:track)
+      @track = FactoryGirl.create(:track, location: nil)
     end
     describe 'with a location' do
       it 'should return the name and location' do

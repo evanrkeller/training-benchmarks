@@ -3,7 +3,7 @@ class Practice < ActiveRecord::Base
   belongs_to :location
   has_and_belongs_to_many :users
   has_many :feedbacks, dependent: :destroy
-  validates :stage, :start_time, :end_time, presence: true
+  validates :stage, :location, :start_time, :end_time, presence: true
 
   def unregistered_users
     User.all.reject { |user| users.include? user }
