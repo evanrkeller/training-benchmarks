@@ -25,4 +25,10 @@ RSpec.describe 'practices/index', type: :view do
     expect(rendered).to have_selector('th', text: Practice.human_attribute_name(:stage))
     expect(rendered).to have_selector('td', text: 'Example Stage')
   end
+
+  it 'displays the location for a practice' do
+    render
+    expect(rendered).to have_selector('th', text: Practice.human_attribute_name(:location))
+    expect(rendered).to have_selector('td', text: 'Example Location')
+  end
 end
