@@ -12,7 +12,8 @@ RSpec.describe LocationsController, type: :controller do
 
   context 'when signed in' do
     before do
-      sign_in FactoryGirl.create(:user)
+      track = FactoryGirl.create(:track, location: nil)
+      sign_in FactoryGirl.create(:user, track: track)
     end
 
     let(:valid_attributes) do

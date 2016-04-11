@@ -12,16 +12,33 @@
   %dd= @practice.start_time
   %dt= Practice.human_attribute_name(:end_time) + ':'
   %dd= @practice.end_time
+  %dt= Practice.human_attribute_name(:stage) + ':'
+  %dd= @practice.stage.try(:name)
+  %dt= Practice.human_attribute_name(:location) + ':'
+  %dd= @practice.location.try(:name)
 
-%ul.unscheduled
-  - @practice.unregistered_users.each do |user|
-    %li
-      = user.full_name
-      = link_to t('schedule'), add_user_practice_path(@practice, user_id: user.id), method: :put
+%h2= t(:scheduled_trainees)
 
-%ul.scheduled
-  - @practice.users.each do |user|
-    %li
-      = user.full_name
-      = link_to t('remove'), remove_user_practice_path(@practice, user_id: user.id), method: :delete
-      = link_to t('feedback'), new_user_feedback_path(user, practice_id: @practice)
+.form-group
+  = form_tag add_user_practice_path(@practice), method: :put, id: 'add_user_practice' do |f|
+    = collection_select(f, :user_id, @practice.unregistered_users, :id, :full_name_with_track,
+      { prompt: t('select_trainee') }, class: 'form-control')
+
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %th= User.human_attribute_name(:full_name)
+    %th= User.human_attribute_name(:track)
+    %th
+  %tbody
+    - @practice.users.each do |user|
+      %tr
+        %td= user.full_name
+        %td= user.track ? user.track.name : t('undeclared')
+        %td
+          = link_to remove_user_practice_path(@practice, user_id: user.id), title: t('remove'), method: :delete do
+            %span.glyphicon.glyphicon-remove-sign{ aria: { hidden: 'true' } }
+            %span.sr-only>= t('remove')
+          = link_to new_user_feedback_path(user, practice_id: @practice), title: t('feedback') do
+            %span.glyphicon.glyphicon-list-alt{ aria: { hidden: 'true' } }
+            %span.sr-only>= t('feedback')
+

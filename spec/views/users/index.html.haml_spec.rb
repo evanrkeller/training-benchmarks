@@ -20,4 +20,13 @@ RSpec.describe 'users/index', type: :view do
     render
     expect(rendered).to match(/Undeclared/)
   end
+
+  it "shows the name of the user's location" do
+    location = FactoryGirl.create(:location, name: 'Example Location')
+    track = FactoryGirl.create(:track, location: location)
+    assign(:users, [FactoryGirl.create(:user, track: track)])
+    render
+    expect(rendered).to have_selector('th', text: 'Location')
+    expect(rendered).to have_selector('td', text: 'Example Location')
+  end
 end

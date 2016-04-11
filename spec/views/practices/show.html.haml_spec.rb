@@ -9,35 +9,54 @@ RSpec.describe 'practices/show', type: :view do
     render
   end
 
+  it 'shows the stage' do
+    render
+    expect(rendered).to have_selector('dt', text: Practice.human_attribute_name(:stage) + ':')
+  end
+
+  it 'shows the location' do
+    render
+    expect(rendered).to have_selector('dt', text: Practice.human_attribute_name(:location) + ':')
+    expect(rendered).to have_selector('dd', text: @practice.location.name)
+  end
+
   describe 'users sections' do
     before do
+      @track = FactoryGirl.create(:track, name: 'Example Track')
       @users = [
         FactoryGirl.create(:user, first_name: 'Bill'),
-        FactoryGirl.create(:user, first_name: 'Joe', practices: [@practice]),
+        FactoryGirl.create(:user, first_name: 'Joe', track: @track, practices: [@practice]),
         FactoryGirl.create(:user, first_name: 'Sue'),
-        FactoryGirl.create(:user, first_name: 'Dave', practices: [@practice])
+        FactoryGirl.create(:user, first_name: 'Dave', track: nil, practices: [@practice])
       ]
     end
 
     it 'shows a list of unregistered users to be scheduled' do
       render
-      assert_select 'ul.unscheduled>li', text: /#{@users[0].full_name}/, count: 1
-      assert_select 'ul.unscheduled>li', text: /#{@users[1].full_name}/, count: 0
-      assert_select 'ul.unscheduled>li', text: /#{@users[2].full_name}/, count: 1
-      assert_select 'ul.unscheduled>li', text: /#{@users[3].full_name}/, count: 0
+      expect(rendered).to have_selector 'option', text: @users[0].full_name_with_track
+      expect(rendered).not_to have_selector 'option', text: @users[1].full_name_with_track
+      expect(rendered).to have_selector 'option', text: @users[2].full_name_with_track
+      expect(rendered).not_to have_selector 'option', text: @users[3].full_name_with_track
     end
 
-    it 'has a schedule button for unregistered users' do
+    it 'has a form for adding unregistered users' do
       render
-      assert_select 'a[href=?]', add_user_practice_path(@practice, user_id: @users[0].id)
+      assert_select 'form[action=?]', add_user_practice_path(@practice)
     end
 
     it 'shows a list of registered users that have been scheduled' do
       render
-      assert_select 'ul.scheduled>li', text: /#{@users[0].full_name}/, count: 0
-      assert_select 'ul.scheduled>li', text: /#{@users[1].full_name}/, count: 1
-      assert_select 'ul.scheduled>li', text: /#{@users[2].full_name}/, count: 0
-      assert_select 'ul.scheduled>li', text: /#{@users[3].full_name}/, count: 1
+      expect(rendered).not_to have_selector 'td', text: @users[0].full_name
+      expect(rendered).to have_selector 'td', text: @users[1].full_name
+      expect(rendered).not_to have_selector 'td', text: @users[2].full_name
+      expect(rendered).to have_selector 'td', text: @users[3].full_name
+    end
+
+    it 'shows the track for scheduled trainees' do
+      render
+      expect(rendered).to have_selector 'th', text: 'Track'
+      expect(rendered).to have_selector 'td', text: @track.name
+      expect(rendered).to have_selector 'td', text: t('undeclared')
     end
 
     it 'has a remove button for registered users' do
