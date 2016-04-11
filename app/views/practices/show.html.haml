@@ -23,9 +23,18 @@
       = user.full_name
       = link_to t('schedule'), add_user_practice_path(@practice, user_id: user.id), method: :put
 
-%ul.scheduled
-  - @practice.users.each do |user|
-    %li
-      = user.full_name
-      = link_to t('remove'), remove_user_practice_path(@practice, user_id: user.id), method: :delete
-      = link_to t('feedback'), new_user_feedback_path(user, practice_id: @practice)
+%h2= t(:scheduled_trainees)
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %th= User.human_attribute_name(:full_name)
+    %th= User.human_attribute_name(:track)
+    %th
+  %tbody
+    - @practice.users.each do |user|
+      %tr
+        %td= user.full_name
+        %td= user.track ? user.track.name : 'Undeclared'
+        %td
+          = link_to t('remove'), remove_user_practice_path(@practice, user_id: user.id), method: :delete
+          = link_to t('feedback'), new_user_feedback_path(user, practice_id: @practice)
+

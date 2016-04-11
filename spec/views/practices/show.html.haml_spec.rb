@@ -22,11 +22,12 @@ RSpec.describe 'practices/show', type: :view do
 
   describe 'users sections' do
     before do
+      @track = FactoryGirl.create(:track, name: 'Example Track')
       @users = [
         FactoryGirl.create(:user, first_name: 'Bill'),
-        FactoryGirl.create(:user, first_name: 'Joe', practices: [@practice]),
+        FactoryGirl.create(:user, first_name: 'Joe', track: @track, practices: [@practice]),
         FactoryGirl.create(:user, first_name: 'Sue'),
-        FactoryGirl.create(:user, first_name: 'Dave', practices: [@practice])
+        FactoryGirl.create(:user, first_name: 'Dave', track: nil, practices: [@practice])
       ]
     end
 
@@ -45,10 +46,17 @@ RSpec.describe 'practices/show', type: :view do
 
     it 'shows a list of registered users that have been scheduled' do
       render
-      assert_select 'ul.scheduled>li', text: /#{@users[0].full_name}/, count: 0
-      assert_select 'ul.scheduled>li', text: /#{@users[1].full_name}/, count: 1
-      assert_select 'ul.scheduled>li', text: /#{@users[2].full_name}/, count: 0
-      assert_select 'ul.scheduled>li', text: /#{@users[3].full_name}/, count: 1
+      expect(rendered).not_to have_selector 'td', text: @users[0].full_name
+      expect(rendered).to have_selector 'td', text: @users[1].full_name
+      expect(rendered).not_to have_selector 'td', text: @users[2].full_name
+      expect(rendered).to have_selector 'td', text: @users[3].full_name
+    end
+
+    it 'shows the track for scheduled trainees' do
+      render
+      expect(rendered).to have_selector 'th', text: 'Track'
+      expect(rendered).to have_selector 'td', text: @track.name
+      expect(rendered).to have_selector 'td', text: 'Undeclared'
     end
 
     it 'has a remove button for registered users' do
