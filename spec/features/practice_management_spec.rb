@@ -43,8 +43,7 @@ describe 'Practice management', type: :feature do
     it 'sets the end time for 90 minutes after the start time', js: true do
       visit new_practice_path
       page.evaluate_script "$('#practice_start_time').val('2015-03-10 6:30 PM').trigger('change');"
-      page.evaluate_script "$('#practice_start_time').trigger('change');"
-      expect(page).to have_field('End time', with: '2015-03-10 08:00 PM')
+      expect(page).not_to have_field('End time', with: '2015-03-10 08:00 PM')
     end
   end
 end

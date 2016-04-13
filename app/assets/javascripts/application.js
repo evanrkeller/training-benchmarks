@@ -24,7 +24,5 @@ $(function() {
 
     $("#practice_start_time").on("dp.change", function (e) {
         $('#practice_end_time').data("DateTimePicker").minDate(e.date);
-        start_time = e.date;
-        $('#practice_end_time').data("DateTimePicker").date(start_time.add(1.5, 'hours'));
     });
 })
