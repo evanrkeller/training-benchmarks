@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :practices
   validates :first_name, :last_name, :phone, presence: true
 
+  scope :by_track, -> (track_id) { where(track_id: track_id) }
+
   def completed_benchmarks
     sign_offs.map(&:bmark)
   end

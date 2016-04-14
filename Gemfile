@@ -34,6 +34,7 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 
 gem 'devise'
 gem 'acts_as_list'
+gem 'has_scope'
 
 gem 'gravatarify', '~> 3.0.0'
 

@@ -42,6 +42,14 @@ RSpec.describe UsersController, type: :controller do
         expect(assigns(:users).size).to eq(2)
         expect(assigns(:users)).to include(user)
       end
+
+      it 'filters users by a selected track' do
+        user1 = FactoryGirl.create(:user, track: @track)
+        user2 = FactoryGirl.create(:user, track: FactoryGirl.create(:track))
+        get :index, by_track: @track.id
+        expect(assigns(:users).all).to include(user1)
+        expect(assigns(:users).all).not_to include(user2)
+      end
     end
 
     describe 'GET show' do

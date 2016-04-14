@@ -21,6 +21,7 @@ en:
   edit: Edit
   edit_model: Edit %{model}
   feedback: Feedback
+  filter_by_track: Filter by track
   new_model: New %{model}
   no_location_assigned: No location assigned
   practice_time: Practice Time
