@@ -4,6 +4,11 @@
     = t('new_model', model: User.model_name.human)
   %h1= User.model_name.human.pluralize
 
+.form-group
+  = form_tag users_path, method: 'get', id: 'filter_user_by_track' do |f|
+    = collection_select(f, :by_track, Track.all, :id, :name_and_location,
+      { selected: params[:by_track], prompt: t('filter_by_track') }, class: 'form-control')
+
 .table-responsive
   %table.table.table-striped.table-bordered.table-hover
     %thead
