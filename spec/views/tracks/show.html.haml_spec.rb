@@ -54,6 +54,12 @@ RSpec.describe 'tracks/show', type: :view do
       expect(rendered).not_to have_selector('tr>td', text: 'Wrong Track')
     end
 
+    it 'includes the stage of the benchmark' do
+      render
+      expect(rendered).to have_selector('tr>th', text: Bmark.human_attribute_name(:stage))
+      expect(rendered).to have_selector('tr>td', text: @track.bmarks.first.stage.name)
+    end
+
     it 'includes a button to create a new benchmark' do
       render
       expect(rendered).to match(new_bmark_path)

@@ -28,12 +28,14 @@
     %thead
       %tr
         %th= Bmark.human_attribute_name(:name)
+        %th= Bmark.human_attribute_name(:stage)
         %th.actions
 
     %tbody
       - @track.bmarks.each do |bmark|
         %tr
           %td= bmark.name
+          %td= bmark.stage.name
           %td.action
             = link_to bmark, title: t('show') do
               %span.glyphicon.glyphicon-info-sign{ aria: { hidden: 'true' } }
