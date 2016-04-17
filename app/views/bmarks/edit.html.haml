@@ -1,5 +1,5 @@
 .page-header
-  = link_to bmarks_path, class: 'btn btn-default' do
+  = link_to track_path(@bmark.track), class: 'btn btn-default' do
     %span.glyphicon.glyphicon-list-alt
     = t('back')
   = link_to @bmark, class: 'btn btn-primary' do

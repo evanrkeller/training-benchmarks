@@ -31,4 +31,9 @@ RSpec.describe 'bmarks/show', type: :view do
     render
     expect(rendered).to match(/Example Track \(Example Location\)/)
   end
+
+  it 'back button links to track show page' do
+    render
+    expect(rendered).to have_selector("a[href='#{track_path(@example_track)}']")
+  end
 end

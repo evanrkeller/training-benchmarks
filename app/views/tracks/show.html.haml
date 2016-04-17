@@ -18,7 +18,7 @@
 %h2= Bmark.model_name.human.pluralize
 
 .form-group
-  = link_to new_bmark_path(bmark: {track_id: @track.id}), class: 'btn btn-primary' do
+  = link_to new_bmark_path(bmark: { track_id: @track.id }), class: 'btn btn-primary' do
     %span.glyphicon.glyphicon-plus
     = t('new_model', model: Bmark.model_name.human)
     -# i18n-tasks-use t('activerecord.models.bmark') # let i18n-tasks know the key is used

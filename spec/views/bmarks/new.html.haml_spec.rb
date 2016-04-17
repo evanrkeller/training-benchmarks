@@ -49,4 +49,10 @@ RSpec.describe 'bmarks/new', type: :view do
     render
     expect(rendered).to have_selector("input[value='Test Track']")
   end
+
+  it 'back button links to track show page' do
+    bmark = assign(:bmark, FactoryGirl.create(:bmark))
+    render
+    expect(rendered).to have_selector("a[href='#{track_path(bmark.track)}']")
+  end
 end
