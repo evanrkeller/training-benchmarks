@@ -44,7 +44,7 @@ class TracksController < ApplicationController
   private
 
   def set_track
-    @track = Track.find(params[:id])
+    @track = Track.includes(bmarks: [:stage]).find(params[:id])
   end
 
   def set_locations_size
