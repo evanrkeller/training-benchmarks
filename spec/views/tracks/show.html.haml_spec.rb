@@ -36,4 +36,22 @@ RSpec.describe 'tracks/show', type: :view do
       expect(rendered).to have_selector('dd', text: t('no_location_assigned'))
     end
   end
+
+  context 'benchmarks section' do
+    before(:each) do
+      @track.bmarks << FactoryGirl.create(:bmark)
+      @different_track = FactoryGirl.create(:track)
+      @different_track.bmarks << FactoryGirl.create(:bmark, name: 'Wrong Track')
+    end
+
+    it 'renders a list of benchmarks for that track' do
+      render
+      expect(rendered).to have_selector('tr>td', text: @track.bmarks.first.name)
+    end
+
+    it 'does not include benchmarks that are not part of the track' do
+      render
+      expect(rendered).not_to have_selector('tr>td', text: 'Wrong Track')
+    end
+  end
 end

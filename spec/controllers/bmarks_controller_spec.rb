@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe BmarksController, type: :controller do
   context 'when not signed in' do
-    context 'GET index' do
+    context 'GET show' do
       it 'redirects to the sign in path' do
-        get :index
+        bmark = Bmark.create! name: 'Example Training Benchmark', description: 'Description of the benchmark'
+        get :show, id: bmark.to_param
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -30,31 +31,6 @@ RSpec.describe BmarksController, type: :controller do
     # in order to pass any filters (e.g. authentication) defined in
     # BmarksController. Be sure to keep this updated too.
     let(:valid_session) { {} }
-
-    describe 'GET index' do
-      it 'assigns all bmarks as @bmarks' do
-        bmark = FactoryGirl.create(:bmark, valid_attributes)
-        get :index, {}, valid_session
-        expect(assigns(:bmarks)).to eq([bmark])
-      end
-
-      it 'orders benchmarks by stage and then track' do
-        stage_a = FactoryGirl.create(:stage, name: 'Stage A')
-        stage_b = FactoryGirl.create(:stage, name: 'Stage B')
-        stage_c = FactoryGirl.create(:stage, name: 'Stage C')
-        track_a = FactoryGirl.create(:track, name: 'Track A')
-        track_b = FactoryGirl.create(:track, name: 'Track B')
-        [track_b, track_a].each do |track|
-          [stage_c, stage_a, stage_b].each do |stage|
-            FactoryGirl.create(:bmark, track: track, stage: stage)
-          end
-        end
-        get :index
-        expect(assigns(:bmarks).map(&:name)).to eq(%w(5 2 6 3 4 1).map do |i|
-          "Example Benchmark Number #{i}"
-        end)
-      end
-    end
 
     describe 'GET show' do
       it 'assigns the requested bmark as @bmark' do
@@ -155,16 +131,16 @@ RSpec.describe BmarksController, type: :controller do
 
     describe 'DELETE destroy' do
       it 'destroys the requested bmark' do
-        bmark = Bmark.create! valid_attributes
+        bmark = FactoryGirl.create(:bmark)
         expect do
           delete :destroy, { id: bmark.to_param }, valid_session
         end.to change(Bmark, :count).by(-1)
       end
 
       it 'redirects to the bmarks list' do
-        bmark = Bmark.create! valid_attributes
+        bmark = FactoryGirl.create(:bmark)
         delete :destroy, { id: bmark.to_param }, valid_session
-        expect(response).to redirect_to(bmarks_url)
+        expect(response).to redirect_to(track_path(bmark.track))
       end
     end
   end

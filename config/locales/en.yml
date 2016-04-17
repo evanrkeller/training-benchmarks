@@ -1,8 +1,6 @@
 ---
 en:
   activerecord:
-    models:
-      bmark: Benchmark
     attributes:
       user:
         bmarks: Benchmarks

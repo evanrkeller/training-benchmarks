@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :bmarks, path: :benchmarks
+  resources :bmarks, path: :benchmarks, except: [:index]
 
   resources :stages
 

@@ -36,8 +36,6 @@
               = link_to Track.model_name.human.pluralize, tracks_path
             %li{ class: current_page?(controller: '/stages') ? 'active' : nil }
               = link_to Stage.model_name.human.pluralize, stages_path
-            %li{ class: current_page?(controller: '/bmarks') ? 'active' : nil }
-              = link_to Bmark.model_name.human.pluralize, bmarks_path
             %li{ class: current_page?(controller: '/practices') ? 'active' : nil }
               = link_to Practice.model_name.human.pluralize, practices_path
             %li{ class: current_page?(controller: '/locations') ? 'active' : nil }

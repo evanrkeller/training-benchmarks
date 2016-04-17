@@ -14,3 +14,27 @@
   %dl.dl-horizontal
     %dt= Track.human_attribute_name(:location) + ':'
     %dd= @track.location.try(:name) || t('no_location_assigned')
+
+%h2= Bmark.model_name.human.pluralize
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th= Bmark.human_attribute_name(:name)
+        %th.actions
+
+    %tbody
+      - @track.bmarks.each do |bmark|
+        %tr
+          %td= bmark.name
+          %td.action
+            = link_to bmark, title: t('show') do
+              %span.glyphicon.glyphicon-info-sign{ aria: { hidden: 'true' } }
+              %span.sr-only>= t('show')
+            = link_to edit_bmark_path(bmark), title: t('edit') do
+              %span.glyphicon.glyphicon-pencil{ aria: { hidden: 'true' } }
+              %span.sr-only>= t('edit')
+            = link_to bmark, data: { confirm: t('are_you_sure') }, title: t('destroy'), method: :delete do
+              %span.glyphicon.glyphicon-trash{ aria: { hidden: 'true' } }
+              %span.sr-only>= t('destroy')
