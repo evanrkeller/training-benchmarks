@@ -53,5 +53,10 @@ RSpec.describe 'tracks/show', type: :view do
       render
       expect(rendered).not_to have_selector('tr>td', text: 'Wrong Track')
     end
+
+    it 'includes a button to create a new benchmark' do
+      render
+      expect(rendered).to match(new_bmark_path)
+    end
   end
 end

@@ -8,7 +8,7 @@ class BmarksController < ApplicationController
   end
 
   def new
-    @bmark = Bmark.new
+    @bmark = Bmark.new(bmark_params)
     respond_with(@bmark)
   end
 

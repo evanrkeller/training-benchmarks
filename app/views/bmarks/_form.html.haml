@@ -21,7 +21,9 @@
   .form-group
     = f.label :track, class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.collection_select(:track_id, Track.all, :id, :name_and_location, {}, class: 'form-control')
+      %input.form-control#bmark_track{ name: 'bmark[track]',
+          value: f.object.track.name_and_location, readonly: 'readonly' }
+      = f.hidden_field(:track_id)
   .form-group
     = f.label :stage, class: 'col-sm-2 control-label'
     .col-sm-10

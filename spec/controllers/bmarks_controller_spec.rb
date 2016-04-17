@@ -42,7 +42,8 @@ RSpec.describe BmarksController, type: :controller do
 
     describe 'GET new' do
       it 'assigns a new bmark as @bmark' do
-        get :new, {}, valid_session
+        track = FactoryGirl.create(:track)
+        get :new, { bmark: { track_id: track.id } }, valid_session
         expect(assigns(:bmark)).to be_a_new(Bmark)
       end
     end
