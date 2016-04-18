@@ -5,14 +5,14 @@ RSpec.describe 'bmarks/edit', type: :view do
     bmark = assign(:bmark, Bmark.create!(
                              name: 'MyString',
                              description: 'MyText',
-                             track: nil,
+                             track: FactoryGirl.create(:track),
                              stage: nil
     ))
     render
     assert_select 'form[action=?][method=?]', bmark_path(bmark), 'post' do
       assert_select 'input#bmark_name[name=?]', 'bmark[name]'
       assert_select 'textarea#bmark_description[name=?]', 'bmark[description]'
-      assert_select 'select#bmark_track_id[name=?]', 'bmark[track_id]'
+      assert_select 'input#bmark_track_id[name=?]', 'bmark[track_id]'
       assert_select 'select#bmark_stage_id[name=?]', 'bmark[stage_id]'
     end
   end
@@ -26,7 +26,7 @@ RSpec.describe 'bmarks/edit', type: :view do
                      stage: nil
     ))
     render
-    expect(rendered).to have_selector('option', text: track.name_and_location)
+    expect(rendered).to have_selector("input[value='Test Track (Test Location)']")
   end
 
   it 'only includes the track name if there is no location associated' do
@@ -38,6 +38,12 @@ RSpec.describe 'bmarks/edit', type: :view do
                      stage: nil
     ))
     render
-    expect(rendered).to have_selector('option', text: track.name)
+    expect(rendered).to have_selector("input[value='Test Track']")
+  end
+
+  it 'back button links to track show page' do
+    bmark = assign(:bmark, FactoryGirl.create(:bmark))
+    render
+    expect(rendered).to have_selector("a[href='#{track_path(bmark.track)}']")
   end
 end

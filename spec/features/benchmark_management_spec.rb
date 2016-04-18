@@ -14,17 +14,17 @@ describe 'Benchmark management', type: :feature do
   describe 'list of benchmarks' do
     it 'deletes a benchmark after the intention is confirmed', js: true do
       @benchmark = FactoryGirl.create(:bmark, name: 'Sample')
-      visit bmarks_path
+      visit track_path(@benchmark.track)
       within(:xpath, "//tr[contains(.,'Sample')]") do
         click_link 'Destroy'
       end
-      expect(current_path).to eq bmarks_path
+      expect(current_path).to eq track_path(@benchmark.track)
       expect(page).not_to have_text 'Sample'
     end
 
     it 'does not delete a user if the intention is not confirmed', js: true do
       @benchmark = FactoryGirl.create(:bmark, name: 'Sample')
-      visit bmarks_path
+      visit track_path(@benchmark.track)
       page.evaluate_script 'window.confirm = function(msg) { return false; }'
       within(:xpath, "//tr[contains(.,'Sample')]") do
         click_link 'Destroy'

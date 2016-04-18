@@ -23,6 +23,12 @@ RSpec.describe 'layouts/application' do
     expect(rendered).to match("<li class='active'>\n<a href=\"/tracks\">Tracks</a>\n</li>")
   end
 
+  it 'does not show Benchmarks' do
+    allow(view).to receive(:current_page?) { |options| options[:controller] == '/tracks' }
+    render
+    expect(rendered).not_to match(link_to(Bmark.model_name.human.pluralize, bmarks_path))
+  end
+
   it 'has a Gravitar icon' do
     render
     expect(rendered).to match('http://gravatar.com/avatar/55502f40dc8b7c769880b10874abc9d0.jpg')

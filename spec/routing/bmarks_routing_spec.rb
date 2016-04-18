@@ -2,10 +2,6 @@ require 'rails_helper'
 
 RSpec.describe BmarksController, type: :routing do
   describe 'routing' do
-    it 'routes to #index' do
-      expect(get: '/benchmarks').to route_to('bmarks#index')
-    end
-
     it 'routes to #new' do
       expect(get: '/benchmarks/new').to route_to('bmarks#new')
     end

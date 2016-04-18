@@ -3,17 +3,12 @@ class BmarksController < ApplicationController
 
   respond_to :html
 
-  def index
-    @bmarks = Bmark.by_stage_and_track.includes(:stage, :track).all
-    respond_with(@bmarks)
-  end
-
   def show
     respond_with(@bmark)
   end
 
   def new
-    @bmark = Bmark.new
+    @bmark = Bmark.new(bmark_params)
     respond_with(@bmark)
   end
 
@@ -32,8 +27,9 @@ class BmarksController < ApplicationController
   end
 
   def destroy
+    track = @bmark.track
     @bmark.destroy
-    respond_with(@bmark)
+    redirect_to track_path(track)
   end
 
   private
