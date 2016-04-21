@@ -14,21 +14,18 @@ describe 'Track management', type: :feature do
   describe 'list of tracks' do
     it 'deletes a track after the intention is confirmed', js: true do
       @track = FactoryGirl.create(:track, name: 'Sample')
-      visit tracks_path
-      within(:xpath, "//tr[contains(.,'Sample')]") do
-        click_link 'Destroy'
-      end
+      visit track_path(@track)
+      click_link 'Destroy'
       expect(current_path).to eq tracks_path
       expect(page).not_to have_text 'Sample'
     end
 
     it 'does not delete a track if the intention is not confirmed', js: true do
       @track = FactoryGirl.create(:track, name: 'Sample')
-      visit tracks_path
+      visit track_path(@track)
       page.evaluate_script 'window.confirm = function(msg) { return false; }'
-      within(:xpath, "//tr[contains(.,'Sample')]") do
-        click_link 'Destroy'
-      end
+      click_link 'Destroy'
+      visit tracks_path
       expect(page).to have_text 'Sample'
     end
   end

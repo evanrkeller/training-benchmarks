@@ -20,6 +20,11 @@ RSpec.describe 'practices/show', type: :view do
     expect(rendered).to have_selector('dd', text: @practice.location.name)
   end
 
+  it 'includes a "Delete" button' do
+    render
+    expect(rendered).to have_link(t('delete'), href: practice_path(@practice))
+  end
+
   describe 'users sections' do
     before do
       @track = FactoryGirl.create(:track, name: 'Example Track')
