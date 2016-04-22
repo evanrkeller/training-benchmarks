@@ -17,6 +17,7 @@ en:
     with_time:
       hour: "%l:%M %P"
       same_days: "%{month} %{day}, %{year}, %{from_hour}-%{until_hour}"
+  delete: Delete
   destroy: Destroy
   edit: Edit
   edit_model: Edit %{model}

@@ -1,4 +1,8 @@
 .page-header
+  = link_to @practice, data: { confirm: t('are_you_sure') }, title: t('destroy'),
+    class: 'btn btn-danger', method: :delete do
+    %span.glyphicon.glyphicon-trash
+    = t('delete')
   = link_to practices_path, class: 'btn btn-default' do
     %span.glyphicon.glyphicon-list-alt
     = t('back')

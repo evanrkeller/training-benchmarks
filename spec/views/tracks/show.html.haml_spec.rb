@@ -37,6 +37,11 @@ RSpec.describe 'tracks/show', type: :view do
     end
   end
 
+  it 'includes a "Delete" button' do
+    render
+    expect(rendered).to have_link(t('delete'), href: track_path(@track))
+  end
+
   context 'benchmarks section' do
     before(:each) do
       @track.bmarks << FactoryGirl.create(:bmark)

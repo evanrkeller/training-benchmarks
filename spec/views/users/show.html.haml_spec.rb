@@ -21,6 +21,11 @@ RSpec.describe 'users/show', type: :view do
     expect(rendered).to match(/Undeclared/)
   end
 
+  it 'includes a "Delete" button' do
+    render
+    expect(rendered).to have_link(t('delete'), href: user_path(@user))
+  end
+
   describe 'benchmarks' do
     before do
       @example_benchmark = FactoryGirl.create(:bmark, track: @example_track)
