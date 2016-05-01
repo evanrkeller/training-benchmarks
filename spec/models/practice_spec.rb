@@ -34,4 +34,12 @@ RSpec.describe Practice, type: :model do
       expect(practice_two.time).to eq 'January 2, 2015,  3:00 pm- 5:00 pm'
     end
   end
+
+  describe '#stage_and_time' do
+    it 'should return the stage and time of a practice' do
+      practice = FactoryGirl.create(:practice, start_time: '2015-01-01 15:00', end_time: '2015-01-01 17:00',
+                                               stage: FactoryGirl.create(:stage, name: 'Test Stage'))
+      expect(practice.stage_and_time).to eq 'Test Stage: January 1, 2015,  3:00 pm- 5:00 pm'
+    end
+  end
 end

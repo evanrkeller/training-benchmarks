@@ -10,7 +10,8 @@ RSpec.describe 'feedbacks/show', type: :view do
 
   it 'renders attributes in <p>' do
     render
-    expect(rendered).to match(/#{html_escape(@feedback.practice)}/)
+    expect(rendered).to match(/#{html_escape(@feedback.practice.stage_and_time)}/)
+    expect(rendered).to match(/#{html_escape(@feedback.user.full_name)}/)
     expect(rendered).to match(/Proceeding nicely/)
   end
 end

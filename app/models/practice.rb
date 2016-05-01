@@ -16,4 +16,8 @@ class Practice < ActiveRecord::Base
   def time
     DateRangeFormatter.format(start_time, end_time, :with_time)
   end
+
+  def stage_and_time
+    "#{stage.name}: #{time}"
+  end
 end
