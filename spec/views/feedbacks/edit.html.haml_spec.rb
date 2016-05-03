@@ -11,7 +11,8 @@ RSpec.describe 'feedbacks/edit', type: :view do
     render
 
     assert_select 'form[action=?][method=?]', user_feedback_path(@user, @feedback), 'post' do
-      assert_select 'select#feedback_practice_id[name=?]', 'feedback[practice_id]'
+      expect(rendered).to have_selector('input#feedback_practice[readonly=readonly]')
+      assert_select 'input#feedback_practice_id[name=?][type=hidden]', 'feedback[practice_id]'
       assert_select 'textarea#feedback_note[name=?]', 'feedback[note]'
     end
   end

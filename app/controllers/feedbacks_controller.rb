@@ -9,7 +9,8 @@ class FeedbacksController < ApplicationController
   end
 
   def new
-    @feedback = @user.feedbacks.where(practice_id: params[:practice_id]).first || @user.feedbacks.new
+    @feedback = @user.feedbacks.where(practice_id: params[:practice_id]).first ||
+                @user.feedbacks.new(practice_id: params[:practice_id])
     respond_with(@user, @feedback)
   end
 
