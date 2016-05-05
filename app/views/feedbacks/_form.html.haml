@@ -23,6 +23,28 @@
     = f.label :note, class: 'col-sm-2 control-label'
     .col-sm-10
       = f.text_area :note, class: 'form-control'
+
+  .form-group
+    .col-sm-2.control-label
+      %strong Test
+    .col-sm-10
+      %table{width: '100%'}
+        %thead
+          %tr
+            %th
+            - (0..3).each do |n|
+              %th.score
+                = Feedback::SCORE_LABEL[n]
+        = f.fields_for :scores do |s|
+          %tr
+            %td
+              = s.object.bmark.try(:name)
+              = s.hidden_field :id
+              = s.hidden_field :bmark_id
+            - (1..4).each do |n|
+              %td.score
+                = s.radio_button :rating, n
+
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit class: 'btn btn-primary'

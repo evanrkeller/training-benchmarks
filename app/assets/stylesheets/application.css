@@ -30,3 +30,8 @@ th.actions, td.actions {
 .completed {
   color: #3c763d;
 }
+
+th.score, td.score {
+  text-align: center;
+  width: 15%;
+}
