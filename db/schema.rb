@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160410200136) do
+ActiveRecord::Schema.define(version: 20160503233814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,17 @@ ActiveRecord::Schema.define(version: 20160410200136) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "scores", force: :cascade do |t|
+    t.integer  "bmark_id"
+    t.integer  "feedback_id"
+    t.integer  "rating"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "scores", ["bmark_id"], name: "index_scores_on_bmark_id", using: :btree
+  add_index "scores", ["feedback_id"], name: "index_scores_on_feedback_id", using: :btree
+
   create_table "sign_offs", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "bmark_id"
@@ -129,6 +140,8 @@ ActiveRecord::Schema.define(version: 20160410200136) do
   add_foreign_key "feedbacks", "users"
   add_foreign_key "practices", "locations"
   add_foreign_key "practices", "stages"
+  add_foreign_key "scores", "bmarks"
+  add_foreign_key "scores", "feedbacks"
   add_foreign_key "sign_offs", "bmarks"
   add_foreign_key "sign_offs", "users"
   add_foreign_key "tracks", "locations"

@@ -1,6 +1,7 @@
 class FeedbacksController < ApplicationController
   before_action :set_user
   before_action :set_feedback, only: [:show, :edit, :update]
+  before_action :set_scorecard, only: [:edit]
 
   respond_to :html
 
@@ -9,7 +10,10 @@ class FeedbacksController < ApplicationController
   end
 
   def new
-    @feedback = @user.feedbacks.where(practice_id: params[:practice_id]).first || @user.feedbacks.new
+    @feedback = @user.feedbacks.where(practice_id: params[:practice_id]).first ||
+                @user.feedbacks.new(practice_id: params[:practice_id])
+
+    set_scorecard
     respond_with(@user, @feedback)
   end
 
@@ -37,8 +41,14 @@ class FeedbacksController < ApplicationController
     @feedback = @user.feedbacks.find(params[:id])
   end
 
+  def set_scorecard
+    @user.track.bmarks.each do |bmark|
+      @feedback.scores.build(bmark: bmark) if @feedback.scores.where(bmark: bmark).empty?
+    end
+  end
+
   def feedback_params
     params.require(:user_id)
-    params.require(:feedback).permit(:practice_id, :note)
+    params.require(:feedback).permit(:practice_id, :note, scores_attributes: [:id, :rating, :bmark_id])
   end
 end

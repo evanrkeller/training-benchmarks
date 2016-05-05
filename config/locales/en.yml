@@ -28,6 +28,11 @@ en:
   practice_time: Practice Time
   remove: Remove
   scheduled_trainees: Scheduled Trainees
+  score:
+    competent: Competent
+    mastered: Mastered
+    needs_improvement: Needs Improvement
+    progressing: Progressing
   select_trainee: Select Trainee to Schedule
   show: Show
   show_model: Show %{model}

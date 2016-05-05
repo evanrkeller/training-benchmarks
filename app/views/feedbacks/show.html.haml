@@ -9,8 +9,8 @@
 
 %dl.dl-horizontal
   %dt User:
-  %dd= @feedback.user
+  %dd= @feedback.user.full_name
   %dt Practice:
-  %dd= @feedback.practice
+  %dd= @feedback.practice.stage_and_time
   %dt Note:
   %dd= @feedback.note
