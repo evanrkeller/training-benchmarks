@@ -7,13 +7,20 @@ RSpec.describe 'feedbacks/new', type: :view do
   end
 
   describe 'without a practice' do
-    it 'renders new feedback form' do
+    before(:each) do
       assign(:feedback, FactoryGirl.build(:feedback, user: @user, practice: nil))
       render
+    end
+
+    it 'renders new feedback form' do
       assert_select 'form[action=?][method=?]', user_feedbacks_path(@user), 'post' do
         assert_select 'select#feedback_practice_id[name=?]', 'feedback[practice_id]'
         assert_select 'textarea#feedback_note[name=?]', 'feedback[note]'
       end
+    end
+
+    it "includes the trainee's name" do
+      expect(rendered).to have_selector("input#feedback_user[readonly=readonly][value='#{@user.full_name}']")
     end
   end
 
