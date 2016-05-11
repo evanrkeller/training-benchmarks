@@ -24,6 +24,12 @@ RSpec.describe 'feedbacks/new', type: :view do
     end
   end
 
+  it 'has a back button that returns to the practice' do
+    assign(:feedback, FactoryGirl.build(:feedback, user: @user, practice: @practice))
+    render
+    expect(rendered).to match(/#{practice_path(@practice)}/)
+  end
+
   describe 'with a practice specified' do
     it "doesn't allow the trainer to change the practice" do
       assign(:feedback, FactoryGirl.build(:feedback, user: @user, practice: @practice))

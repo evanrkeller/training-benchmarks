@@ -1,7 +1,8 @@
 .page-header
-  = link_to user_path(@user), class: 'btn btn-default' do
-    %span.glyphicon.glyphicon-list-alt
-    = t('back')
+  - if @feedback.practice.present?
+    = link_to practice_path(@feedback.practice), class: 'btn btn-default' do
+      %span.glyphicon.glyphicon-list-alt
+      = t('back')
   %h1= t('new_model', model: Feedback.model_name.human)
 
 = render 'form'
