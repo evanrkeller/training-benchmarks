@@ -36,12 +36,14 @@
   %tbody
     - @practice.users.each do |user|
       %tr{ data: { 'user-id' => user.to_param } }
-        %td= user.full_name
-        %td= user.track ? user.track.name : t('undeclared')
         %td
-          = link_to remove_user_practice_path(@practice, user_id: user.id), title: t('remove'), method: :delete do
+          = link_to remove_user_practice_path(@practice, user_id: user.id), title: t('remove'), method: :delete,
+            class: 'text-danger' do
             %span.glyphicon.glyphicon-remove-sign{ aria: { hidden: 'true' } }
             %span.sr-only>= t('remove')
+          = user.full_name
+        %td= user.track ? user.track.name : t('undeclared')
+        %td
           - if user.feedbacks.where(practice: @practice).any?
             - feedback = user.feedbacks.where(practice: @practice).first
             = link_to edit_user_feedback_path(user, feedback.to_param), title: t('feedback'), class: 'has_feedback' do
