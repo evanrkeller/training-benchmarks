@@ -11,6 +11,11 @@
           %li= msg
 
   .form-group
+    = f.label :user, class: 'col-sm-2 control-label'
+    .col-sm-10
+      %input.form-control#feedback_user{ name: 'feedback[user]',
+        value: f.object.user.full_name, readonly: 'readonly' }
+  .form-group
     = f.label :practice, class: 'col-sm-2 control-label'
     .col-sm-10
       - if f.object.practice_id.present?

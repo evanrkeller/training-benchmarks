@@ -61,10 +61,20 @@ RSpec.describe FeedbacksController, type: :controller do
     end
 
     describe 'GET edit' do
+      before(:each) do
+        @feedback = user.feedbacks.create! valid_attributes
+      end
+
       it 'assigns the requested feedback as @feedback' do
-        feedback = user.feedbacks.create! valid_attributes
-        get :edit, user_id: user.id, id: feedback.to_param
-        expect(assigns(:feedback)).to eq(feedback)
+        get :edit, user_id: user.id, id: @feedback.to_param
+        expect(assigns(:feedback)).to eq(@feedback)
+      end
+
+      it 'has a scorecard' do
+        2.times { FactoryGirl.create(:bmark, track: user.track) }
+        FactoryGirl.create(:score, feedback: @feedback, bmark: user.track.bmarks.first)
+        get :edit, user_id: user.id, id: @feedback.to_param
+        expect(assigns(:feedback).scores.size).to eq(2)
       end
     end
 

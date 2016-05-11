@@ -5,7 +5,7 @@ class Feedback < ActiveRecord::Base
 
   accepts_nested_attributes_for :scores, allow_destroy: true
 
-  validates :user, :practice, :note, presence: true
+  validates :user, :practice, presence: true
   validates :user, uniqueness: { scope: :practice }
 
   SCORE_LABEL = [I18n.t('score.needs_improvement'),

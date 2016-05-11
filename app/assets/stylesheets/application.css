@@ -35,3 +35,11 @@ th.score, td.score {
   text-align: center;
   width: 15%;
 }
+
+a.needs_feedback {
+  color: grey;
+}
+
+a.has_feedback {
+  color: green;
+}

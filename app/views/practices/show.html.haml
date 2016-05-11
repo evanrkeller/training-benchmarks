@@ -35,14 +35,23 @@
     %th
   %tbody
     - @practice.users.each do |user|
-      %tr
-        %td= user.full_name
-        %td= user.track ? user.track.name : t('undeclared')
+      %tr{ data: { 'user-id' => user.to_param } }
         %td
-          = link_to remove_user_practice_path(@practice, user_id: user.id), title: t('remove'), method: :delete do
+          = link_to remove_user_practice_path(@practice, user_id: user.id), title: t('remove'), method: :delete,
+            class: 'text-danger' do
             %span.glyphicon.glyphicon-remove-sign{ aria: { hidden: 'true' } }
             %span.sr-only>= t('remove')
-          = link_to new_user_feedback_path(user, practice_id: @practice), title: t('feedback') do
-            %span.glyphicon.glyphicon-list-alt{ aria: { hidden: 'true' } }
-            %span.sr-only>= t('feedback')
+          = user.full_name
+        %td= user.track ? user.track.name : t('undeclared')
+        %td
+          - if user.feedbacks.where(practice: @practice).any?
+            - feedback = user.feedbacks.where(practice: @practice).first
+            = link_to edit_user_feedback_path(user, feedback.to_param), title: t('feedback'), class: 'has_feedback' do
+              %span.glyphicon.glyphicon-ok-sign{ aria: { hidden: 'true' } }
+              %span.sr-only>= t('feedback')
+          - else
+            = link_to new_user_feedback_path(user, practice_id: @practice),
+              title: t('feedback'), class: 'needs_feedback' do
+              %span.glyphicon.glyphicon-ok-circle{ aria: { hidden: 'true' } }
+              %span.sr-only>= t('feedback')
 
