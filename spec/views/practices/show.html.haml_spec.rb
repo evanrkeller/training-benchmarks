@@ -73,5 +73,22 @@ RSpec.describe 'practices/show', type: :view do
       render
       assert_select 'a[href=?]', new_user_feedback_path(@users[1], practice_id: @practice.id)
     end
+
+    it 'has an indication the user already has feedback' do
+      feedback = FactoryGirl.create(:feedback, user: @users[1], practice: @practice)
+      render
+      assert_select 'tr[data-user-id=?]', @users[1].to_param do |row|
+        expect(row).to have_selector "a[href='#{edit_user_feedback_path(@users[1], feedback.to_param)}']"
+        expect(row).to have_selector 'a.has_feedback'
+      end
+    end
+
+    it 'has an indication the user does not already have feedback' do
+      render
+      assert_select 'tr[data-user-id=?]', @users[1].to_param do |row|
+        expect(row).to have_selector "a[href='#{new_user_feedback_path(@users[1], practice_id: @practice.id)}']"
+        expect(row).to have_selector 'a.needs_feedback'
+      end
+    end
   end
 end
