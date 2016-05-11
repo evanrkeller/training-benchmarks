@@ -4,6 +4,7 @@ RSpec.describe Bmark, type: :model do
   it { should belong_to :track }
   it { should belong_to :stage }
   it { should have_many(:sign_offs).dependent(:destroy) }
+  it { should have_many(:scores).dependent(:destroy) }
   it { should validate_presence_of :name }
 
   describe '::by_stage_and_track' do
