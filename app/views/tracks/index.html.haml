@@ -4,6 +4,11 @@
     = t('new_model', model: Track.model_name.human)
   %h1= Track.model_name.human.pluralize
 
+.form-group
+  = form_tag tracks_path, method: 'get', id: 'filter_track_by_location' do |f|
+    = collection_select(f, :by_location, Location.order(:name), :id, :name,
+      { selected: params[:by_location], prompt: t('filter_by_location') }, class: 'form-control')
+
 .table-responsive
   %table.table.table-striped.table-bordered.table-hover
     %thead

@@ -29,4 +29,11 @@ RSpec.describe 'users/index', type: :view do
     expect(rendered).to have_selector('th', text: 'Location')
     expect(rendered).to have_selector('td', text: 'Example Location')
   end
+
+  it 'includes a filter for looking at a specific track' do
+    render
+    expect(rendered).not_to have_selector('option', text: @track.name_and_location)
+    expect(rendered).to have_selector("optgroup[label='#{@track.location.name}']")
+    expect(rendered).to have_selector('option', text: @track.name)
+  end
 end

@@ -5,6 +5,8 @@ class Track < ActiveRecord::Base
   validates :name, presence: true
   validates :location, presence: true, if: :locations_exist
 
+  scope :by_location, -> (location_id) { where(location_id: location_id) }
+
   def name_and_location
     if location
       "#{name} (#{location.name})"
