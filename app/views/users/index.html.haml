@@ -6,7 +6,7 @@
 
 .form-group
   = form_tag users_path, method: 'get', id: 'filter_user_by_track' do |f|
-    = collection_select(f, :by_track, Track.all, :id, :name_and_location,
+    = grouped_collection_select(f, :by_track, Location.order(:name), :tracks, :name, :id, :name,
       { selected: params[:by_track], prompt: t('filter_by_track') }, class: 'form-control')
 
 .table-responsive
