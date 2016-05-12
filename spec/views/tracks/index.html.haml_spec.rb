@@ -32,4 +32,10 @@ RSpec.describe 'tracks/index', type: :view do
     render
     expect(rendered).to have_selector('td', text: t('no_location_assigned'))
   end
+
+  it 'includes a filter for looking at a specific location' do
+    location = FactoryGirl.create(:location)
+    render
+    expect(rendered).to have_selector('option', text: location.name)
+  end
 end

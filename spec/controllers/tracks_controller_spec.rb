@@ -32,6 +32,15 @@ RSpec.describe TracksController, type: :controller do
         get :index, {}
         expect(assigns(:tracks)).to eq([track])
       end
+
+      it 'filters tracks by a selected location' do
+        location = FactoryGirl.create(:location)
+        track1 = FactoryGirl.create(:track, location: FactoryGirl.create(:location))
+        track2 = FactoryGirl.create(:track, location: location)
+        get :index, by_location: location.id
+        expect(assigns(:tracks).all).to include(track2)
+        expect(assigns(:tracks).all).not_to include(track1)
+      end
     end
 
     describe 'GET show' do

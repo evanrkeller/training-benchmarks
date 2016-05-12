@@ -4,8 +4,10 @@ class TracksController < ApplicationController
 
   respond_to :html
 
+  has_scope :by_location
+
   def index
-    @tracks = Track.all
+    @tracks = apply_scopes(Track).all
     respond_with(@tracks)
   end
 
